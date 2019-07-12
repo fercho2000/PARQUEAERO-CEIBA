@@ -32,44 +32,44 @@ public class ServicioHistorialParqueo {
 	private RepositorioHistorialParqueo repositorioHistorial;
 	private RepositorioVehiculo repositorioVehiculo;
 
+	public ServicioHistorialParqueo() {
+	}
 
 	public ServicioHistorialParqueo(RepositorioHistorialParqueo repositorioHistorial,
 			RepositorioVehiculo repositorioVehiculo) {
-		
+
 		this.repositorioHistorial = repositorioHistorial;
 		this.repositorioVehiculo = repositorioVehiculo;
 	}
 
-
 	public void ejecutar(Vehiculo vehiculo) {
-		
-		
-		 //Que el vehiculos
-		//Que el vehiculo no existe
-		
+
+		// Que el vehiculos
+		// Que el vehiculo no existe
+
 		this.repositorioVehiculo.crear(vehiculo);
-		HistorialParqueo historiaParqueo = new HistorialParqueo(new Date(), null, 0, vehiculo);	
+		HistorialParqueo historiaParqueo = new HistorialParqueo(new Date(), null, 0, vehiculo);
 		validarExistenciaPreviaHistorial(historiaParqueo);
 		validarVehiculoParqueado(vehiculo.getPlaca());
 		validarCupos(historiaParqueo);
 		validarPlacaParaDiasHabiles(vehiculo.getPlaca(), LocalDateTime.now().getDayOfWeek());
-		
-	
+
 		this.repositorioHistorial.crear(historiaParqueo);
-	
+
 	}
-	
-		/*
-		
-		validarExistenciaPreviaHistorial(historial);
-		validarVehiculoParqueado(historial.getVehiculo().getPlaca());
-		validarCupos(historial);
-		validarPlacaParaDiasHabiles(historial.getVehiculo().getPlaca(), LocalDateTime.now().getDayOfWeek());
-		this.repositorioHistorial.crear(historial);
-		
-	}
-	
-*/
+
+	/*
+	 * 
+	 * validarExistenciaPreviaHistorial(historial);
+	 * validarVehiculoParqueado(historial.getVehiculo().getPlaca());
+	 * validarCupos(historial);
+	 * validarPlacaParaDiasHabiles(historial.getVehiculo().getPlaca(),
+	 * LocalDateTime.now().getDayOfWeek());
+	 * this.repositorioHistorial.crear(historial);
+	 * 
+	 * }
+	 * 
+	 */
 	private void validarExistenciaPreviaHistorial(HistorialParqueo historial) {
 		boolean existe = this.repositorioHistorial.existeHistorial(historial.getId());
 		if (existe) {
@@ -93,13 +93,13 @@ public class ServicioHistorialParqueo {
 			if (cantidadVehiculos > NUMERO_MAXIMO_PARA_MOTO) {
 				throw new ExcepcionCantidadVehiculos(NO_HAY_MAS_CUPOS_PARA_MOTO);
 			}
-		} else if(tipo.equals(AUTO)){
+		} else if (tipo.equals(AUTO)) {
 			if (cantidadVehiculos > NUMERO_MAXIMO_PARA_AUTO) {
 				throw new ExcepcionCantidadVehiculos(NO_HAY_MAS_CUPOS_PARA_AUTO);
 			}
 		}
 	}
-	
+
 	public void validarPlacaParaDiasHabiles(String placa, DayOfWeek eldiaDeHoy) {
 		if (validaPrimeraLetra(placa) && hoyEsLunesODomingo(eldiaDeHoy)) {
 			throw new ExcepcionRestriccionDia(NO_PUEDE_INGRESAR_DIA_NO_HABIL);
@@ -110,13 +110,12 @@ public class ServicioHistorialParqueo {
 		String tipoAutomovil = tipoVehiculo;
 		if (tipoAutomovil.contentEquals(AUTO)) {
 			return AUTO;
-		} else if (tipoAutomovil.equals(MOTO)){
+		} else if (tipoAutomovil.equals(MOTO)) {
 			return MOTO;
-		}else {
+		} else {
 			throw new ExepcionTipoVehiculoInvalido(TIPO_VEHICULO_INCORRECTO);
 		}
 	}
-
 
 	public boolean validaPrimeraLetra(String placa) {
 		String primeraLetra = placa.toLowerCase().charAt(0) + "";
