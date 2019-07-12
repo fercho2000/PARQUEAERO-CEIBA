@@ -32,7 +32,7 @@ pipeline {
                         gitTool:'Git_Centos',
                         submoduleCfg: [],
                         userRemoteConfigs: [[credentialsId:'Github_fercho2000',
-                        url:'https://github.com/fercho2000/estacionamiento']]])
+                        url:'https://github.com/fercho2000/PARQUEAERO-CEIBA']]])
            }  
        }
        stage('Unit Tests') {
