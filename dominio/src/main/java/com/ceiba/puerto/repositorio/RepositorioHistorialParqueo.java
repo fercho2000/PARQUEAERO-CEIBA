@@ -6,10 +6,10 @@ import com.ceiba.modelo.HistorialParqueo;
 
 public interface RepositorioHistorialParqueo {
 
-	Double actualizarHistorial(HistorialParqueo historial);
+	void actualizarHistorial(HistorialParqueo historial);
 	
-	
-	/**
+	 HistorialParqueo obtenerHistorialParqueo(String placa);
+			/**
 	 * Permite listar los Vehiculos
 	 * @return Vehiculo
 	 */

@@ -10,12 +10,12 @@ import com.ceiba.puerto.repositorio.RepositorioHistorialParqueo;
 
 public class ServicioHistorialParqueaderoSalida {
 
-	private static final double VALOR_HORA_AUTO = 1000;
-	private static final double VALOR_HORA_MOTO = 500;
-	private static final double VALOR_DIA_AUTO = 8000;
-	private static final double VALOR_DIA_MOTO = 4000;
-	private static final double VALOR_CILINDRAJE = 2000;
-	private static final double MINIMAS_HORAS = 9;
+	private static final float VALOR_HORA_AUTO = 1000;
+	private static final float VALOR_HORA_MOTO = 500;
+	private static final float VALOR_DIA_AUTO = 8000;
+	private static final float VALOR_DIA_MOTO = 4000;
+	private static final float VALOR_CILINDRAJE = 2000;
+	private static final float MINIMAS_HORAS = 9;
 	private static final int HORAS_DIA = 24;
 	private static final int CILINDRAJE_MAXIMO = 500;
 	private static final String MOTO = "moto";
@@ -31,16 +31,21 @@ public class ServicioHistorialParqueaderoSalida {
 		this.repositorioHistorial = repositorioHistorial;
 	}
 
-	public Double ejecutarparqueo(HistorialParqueo historial) {
-		validarExistenciaHistorial(historial.getId());
+	public void ejecutarparqueo(HistorialParqueo historial) {
+		
+		float valorTotalAPagar =0;
+//		validarExistenciaHistorial(historial.getId());
 		Date fechaSalida = historial.getFechaSalida();
-		if (historial.getFechaSalida() == null) {
+		if (fechaSalida == null) {
 			fechaSalida = new Date();
 		}
-		Double pago = calcularPagoParqueo(historial.getFechaIngreso(), fechaSalida, historial.getVehiculo().getPlaca(),
+		 valorTotalAPagar = calcularPagoParqueo(historial.getFechaIngreso(), fechaSalida, historial.getVehiculo().getPlaca(),
 				historial.getVehiculo().getTipoVehiculo());
 
-		return this.repositorioHistorial.actualizarHistorial(historial);
+		historial.setPago(valorTotalAPagar);
+		historial.setFechaSalida(fechaSalida);
+		
+		 this.repositorioHistorial.actualizarHistorial(historial);
 	}
 
 	private void validarExistenciaHistorial(int id) {
@@ -50,8 +55,8 @@ public class ServicioHistorialParqueaderoSalida {
 		}
 	}
 
-	public Double calcularPagoParqueo(Date fechaIngreso, Date fechaSalida, String placa, String tipoVehiculo) {
-		double pago = 0;
+	public float calcularPagoParqueo(Date fechaIngreso, Date fechaSalida, String placa, String tipoVehiculo) {
+		float pago = 0;
 
 		int cilindraje = this.repositorioHistorial.devuelveCilindraje(placa);
 		String tipo = devuelveTipoDeVehiculo(tipoVehiculo);
@@ -107,6 +112,10 @@ public class ServicioHistorialParqueaderoSalida {
 
 		}
 
+	}
+	
+	public HistorialParqueo obtenerHistorialParqueo(String placaVehiculo) {
+		return this.repositorioHistorial.obtenerHistorialParqueo(placaVehiculo);
 	}
 
 	public int obtenerHorasTrascurridas(Date fechaIngreso, Date fechaSalida) {

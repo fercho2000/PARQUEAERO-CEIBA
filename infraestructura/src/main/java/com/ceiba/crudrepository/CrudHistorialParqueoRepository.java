@@ -7,5 +7,6 @@ import com.ceiba.entity.EntityHistorialParqueo;
 
 @Repository
 public interface CrudHistorialParqueoRepository extends CrudRepository<EntityHistorialParqueo, Integer> {
-
+	public EntityHistorialParqueo findByVehiculoPlaca(String placa);
+	
 }

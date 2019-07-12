@@ -17,16 +17,40 @@ import com.ceiba.puerto.repositorio.RepositorioHistorialParqueo;
 public class RepositorioHistorialParqueoData implements RepositorioHistorialParqueo {
 
 	CrudHistorialParqueoRepository repositorioParqueo;
-	
-	
+
 	public RepositorioHistorialParqueoData(CrudHistorialParqueoRepository repositorioParqueo) {
 		this.repositorioParqueo = repositorioParqueo;
 	}
 
 	@Override
-	public Double actualizarHistorial(HistorialParqueo historial) {
-		// TODO Auto-generated method stub
-		return null;
+	public HistorialParqueo obtenerHistorialParqueo(String placa) {
+		EntityHistorialParqueo parqueoEntity = repositorioParqueo.findByVehiculoPlaca(placa);
+
+		parqueoEntity.getId();
+		parqueoEntity.getFechaIngreso();
+		parqueoEntity.getFechaSalida();
+		parqueoEntity.getPago();
+		parqueoEntity.getVehiculo();
+
+		Vehiculo vehiculo = new Vehiculo(parqueoEntity.getVehiculo().getPlaca(),
+				parqueoEntity.getVehiculo().getTipovehiculo(), parqueoEntity.getVehiculo().getCilindraje(),
+				parqueoEntity.getVehiculo().getMarca(), parqueoEntity.getVehiculo().getModelo());
+
+		HistorialParqueo historial = new HistorialParqueo(parqueoEntity.getFechaIngreso(),
+				parqueoEntity.getFechaSalida(), parqueoEntity.getPago(), vehiculo);
+
+		return historial;
+	}
+
+	@Override
+	public void actualizarHistorial(HistorialParqueo historial) {
+
+		EntityHistorialParqueo entityHistorial = this.repositorioParqueo
+				.findByVehiculoPlaca(historial.getVehiculo().getPlaca());
+		entityHistorial.setFechaSalida(historial.getFechaSalida());
+		entityHistorial.setPago(historial.getPago());
+		this.repositorioParqueo.save(entityHistorial);
+
 	}
 
 	@Override
@@ -39,10 +63,11 @@ public class RepositorioHistorialParqueoData implements RepositorioHistorialParq
 	public void crear(HistorialParqueo historialParqueo) {
 
 		Vehiculo vehiculo = historialParqueo.getVehiculo();
-		EntityVehiculo entityVehiculo = new EntityVehiculo(vehiculo.getPlaca(), vehiculo.getTipoVehiculo(), vehiculo.getCilindraje(), vehiculo.getMarca(), vehiculo.getModelo());;
-		
-		EntityHistorialParqueo entidadHistorialParqueo = new EntityHistorialParqueo(historialParqueo.getFechaIngreso(), historialParqueo.getFechaSalida(),
-				historialParqueo.getPago(), entityVehiculo);
+		EntityVehiculo entityVehiculo = new EntityVehiculo(vehiculo.getPlaca(), vehiculo.getTipoVehiculo(),
+				vehiculo.getCilindraje(), vehiculo.getMarca(), vehiculo.getModelo());
+
+		EntityHistorialParqueo entidadHistorialParqueo = new EntityHistorialParqueo(historialParqueo.getFechaIngreso(),
+				historialParqueo.getFechaSalida(), historialParqueo.getPago(), entityVehiculo);
 		this.repositorioParqueo.save(entidadHistorialParqueo);
 
 	}
@@ -77,7 +102,4 @@ public class RepositorioHistorialParqueoData implements RepositorioHistorialParq
 		return 0;
 	}
 
-
-	
-	
 }
