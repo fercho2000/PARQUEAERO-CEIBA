@@ -6,9 +6,11 @@ import java.util.Date;
 import com.ceiba.excepcion.ExcepcionCantidadVehiculos;
 import com.ceiba.excepcion.ExcepcionExistencia;
 import com.ceiba.excepcion.ExcepcionRestriccionDia;
+import com.ceiba.excepcion.ExcepcionValoresObligatorios;
 import com.ceiba.excepcion.ExcepcionVehiculoParqueado;
 import com.ceiba.excepcion.ExepcionTipoVehiculoInvalido;
 import com.ceiba.modelo.HistorialParqueo;
+import com.ceiba.modelo.ValidarArgumentosVehiculo;
 import com.ceiba.modelo.Vehiculo;
 import com.ceiba.puerto.repositorio.RepositorioHistorialParqueo;
 import com.ceiba.puerto.repositorio.RepositorioVehiculo;
@@ -23,6 +25,7 @@ public class ServicioHistorialParqueo {
 	private static final String NO_PUEDE_INGRESAR_DIA_NO_HABIL = "El vehiculo no puede ingresar, dia no habil";
 	private static final String TIPO_VEHICULO_INCORRECTO = "Tipo de vehiculo incorrecto";
 	private static final String El_VEHICULO_YA_ESTA_PARQUEADO = "El vehiculo ya esta parqueado";
+	private static final String TODOS_LOS_DATOS_OBLIGATORIOS = "Todos los datos son obligatorio.";
 	private static final String MOTO = "moto";
 	private static final String AUTO = "auto";
 	private static final String LETRA_A = "a";
@@ -44,32 +47,29 @@ public class ServicioHistorialParqueo {
 
 	public void ejecutar(Vehiculo vehiculo) {
 
-		// Que el vehiculos
-		// Que el vehiculo no existe
+		validarCampoObligatorios(vehiculo.getPlaca(), vehiculo.getTipoVehiculo(), vehiculo.getCilindraje(),
+				vehiculo.getMarca(), vehiculo.getModelo(), TODOS_LOS_DATOS_OBLIGATORIOS);
 
-		this.repositorioVehiculo.crear(vehiculo);
 		HistorialParqueo historiaParqueo = new HistorialParqueo(new Date(), null, 0, vehiculo);
 		validarExistenciaPreviaHistorial(historiaParqueo);
 		validarVehiculoParqueado(vehiculo.getPlaca());
 		validarCupos(historiaParqueo);
 		validarPlacaParaDiasHabiles(vehiculo.getPlaca(), LocalDateTime.now().getDayOfWeek());
 
+		this.repositorioVehiculo.crear(vehiculo);
 		this.repositorioHistorial.crear(historiaParqueo);
 
 	}
 
-	/*
-	 * 
-	 * validarExistenciaPreviaHistorial(historial);
-	 * validarVehiculoParqueado(historial.getVehiculo().getPlaca());
-	 * validarCupos(historial);
-	 * validarPlacaParaDiasHabiles(historial.getVehiculo().getPlaca(),
-	 * LocalDateTime.now().getDayOfWeek());
-	 * this.repositorioHistorial.crear(historial);
-	 * 
-	 * }
-	 * 
-	 */
+	public void validarCampoObligatorios(String placa, String tipoVehiculo, String cilindraje, String marca,
+			String modelo, String mensaje) {
+
+		if (placa == null || placa.equals("") || tipoVehiculo == null || tipoVehiculo.equals("") || cilindraje == null
+				|| cilindraje.equals("") || marca == null || marca.equals("") || modelo == null || modelo.equals("")) {
+			throw new ExcepcionValoresObligatorios(mensaje);
+		}
+	}
+
 	private void validarExistenciaPreviaHistorial(HistorialParqueo historial) {
 		boolean existe = this.repositorioHistorial.existeHistorial(historial.getId());
 		if (existe) {

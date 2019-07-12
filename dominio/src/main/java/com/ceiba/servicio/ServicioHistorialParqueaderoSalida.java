@@ -4,7 +4,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
 import com.ceiba.excepcion.ExcepcionNoExisteId;
 import com.ceiba.modelo.HistorialParqueo;
 import com.ceiba.puerto.repositorio.RepositorioHistorialParqueo;
@@ -25,118 +24,115 @@ public class ServicioHistorialParqueaderoSalida {
 
 	private RepositorioHistorialParqueo repositorioHistorial;
 
-	
-	public ServicioHistorialParqueaderoSalida () {}
+	public ServicioHistorialParqueaderoSalida() {
+	}
+
 	public ServicioHistorialParqueaderoSalida(RepositorioHistorialParqueo repositorioHistorial) {
 		this.repositorioHistorial = repositorioHistorial;
 	}
 
-	public Double ejecutarparqueo(HistorialParqueo historial) { 
+	public Double ejecutarparqueo(HistorialParqueo historial) {
 		validarExistenciaHistorial(historial.getId());
-	    	Date fechaSalida = historial.getFechaSalida(); 
-	    	if(historial.getFechaSalida() == null) {
-	    		fechaSalida = new Date(); 
-	    	}    	   	
-	    	Double pago = calcularPagoParqueo(historial.getFechaIngreso(), fechaSalida,historial.getVehiculo().getPlaca(),historial.getVehiculo().getTipoVehiculo()); 
-	    	
-	        return this.repositorioHistorial.actualizarHistorial(historial);
-	    }
-
-	    
-	    private void validarExistenciaHistorial(int id) {
-			boolean existe = this.repositorioHistorial.existeHistorial(id);
-	    	if(!existe) {
-	    		throw new ExcepcionNoExisteId(NO_EXISTE_UN_REGISTRO_CON_ESE_ID);
-	    	}
+		Date fechaSalida = historial.getFechaSalida();
+		if (historial.getFechaSalida() == null) {
+			fechaSalida = new Date();
 		}
-	    
-	    public Double calcularPagoParqueo(Date fechaIngreso, Date fechaSalida, String placa, String tipoVehiculo) {
-	    	double pago = 0;
-	    	
-	    	int cilindraje = this.repositorioHistorial.devuelveCilindraje(placa);
-	    	String tipo = devuelveTipoDeVehiculo(tipoVehiculo);
-			int horas = obtenerHorasTrascurridas(fechaIngreso, fechaSalida);
-			
-			if(tipo.equals(MOTO)) {
-				
-				if(cilindraje > CILINDRAJE_MAXIMO) {
-					pago = pago + VALOR_CILINDRAJE;
-				}
-				
-				if(horas < MINIMAS_HORAS) {				
-					return pago + (VALOR_HORA_MOTO*horas);						
-				}
-				else {
-					
-					if(horas <= HORAS_DIA) {
-						return pago + VALOR_DIA_MOTO;
-					}
-					
-					int dias = (horas / HORAS_DIA);
-					horas = horas % HORAS_DIA;
-					
-					if(horas < MINIMAS_HORAS) {
-						pago = pago + (horas*VALOR_HORA_MOTO);
-					}else {
-						pago = pago + VALOR_DIA_MOTO;
-					}
-					
-					pago = pago + (dias*VALOR_DIA_MOTO);
-					
-					return pago;
-				}
-				
-			}else {
-				
-				if(horas < MINIMAS_HORAS) {				
-					return pago + (VALOR_HORA_AUTO*horas);						
-				}
-				else if(horas <= HORAS_DIA) {
-					return pago + VALOR_DIA_AUTO;
-				}else {
-					int dias = (horas / HORAS_DIA);
-					horas = horas % HORAS_DIA;
-					if(horas < MINIMAS_HORAS) {
-						pago = pago + (horas*VALOR_HORA_AUTO);
-					}else {
-						pago = pago + VALOR_DIA_AUTO;
-					}
-					
-					pago = pago + (dias*VALOR_DIA_AUTO);
-					
-					return pago;
-				}
-				
+		Double pago = calcularPagoParqueo(historial.getFechaIngreso(), fechaSalida, historial.getVehiculo().getPlaca(),
+				historial.getVehiculo().getTipoVehiculo());
+
+		return this.repositorioHistorial.actualizarHistorial(historial);
+	}
+
+	private void validarExistenciaHistorial(int id) {
+		boolean existe = this.repositorioHistorial.existeHistorial(id);
+		if (!existe) {
+			throw new ExcepcionNoExisteId(NO_EXISTE_UN_REGISTRO_CON_ESE_ID);
+		}
+	}
+
+	public Double calcularPagoParqueo(Date fechaIngreso, Date fechaSalida, String placa, String tipoVehiculo) {
+		double pago = 0;
+
+		int cilindraje = this.repositorioHistorial.devuelveCilindraje(placa);
+		String tipo = devuelveTipoDeVehiculo(tipoVehiculo);
+		int horas = obtenerHorasTrascurridas(fechaIngreso, fechaSalida);
+
+		if (tipo.equals(MOTO)) {
+
+			if (cilindraje > CILINDRAJE_MAXIMO) {
+				pago = pago + VALOR_CILINDRAJE;
 			}
-						
-	    }
-	    
-	    public int obtenerHorasTrascurridas(Date fechaIngreso,Date fechaSalida) {
+
+			if (horas < MINIMAS_HORAS) {
+				return pago + (VALOR_HORA_MOTO * horas);
+			} else {
+
+				if (horas <= HORAS_DIA) {
+					return pago + VALOR_DIA_MOTO;
+				}
+
+				int dias = (horas / HORAS_DIA);
+				horas = horas % HORAS_DIA;
+
+				if (horas < MINIMAS_HORAS) {
+					pago = pago + (horas * VALOR_HORA_MOTO);
+				} else {
+					pago = pago + VALOR_DIA_MOTO;
+				}
+
+				pago = pago + (dias * VALOR_DIA_MOTO);
+
+				return pago;
+			}
+
+		} else {
+
+			if (horas < MINIMAS_HORAS) {
+				return pago + (VALOR_HORA_AUTO * horas);
+			} else if (horas <= HORAS_DIA) {
+				return pago + VALOR_DIA_AUTO;
+			} else {
+				int dias = (horas / HORAS_DIA);
+				horas = horas % HORAS_DIA;
+				if (horas < MINIMAS_HORAS) {
+					pago = pago + (horas * VALOR_HORA_AUTO);
+				} else {
+					pago = pago + VALOR_DIA_AUTO;
+				}
+
+				pago = pago + (dias * VALOR_DIA_AUTO);
+
+				return pago;
+			}
+
+		}
+
+	}
+
+	public int obtenerHorasTrascurridas(Date fechaIngreso, Date fechaSalida) {
 //	        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd H:m:s");
-	        DateFormat formatoHora = new SimpleDateFormat("HH");
+		DateFormat formatoHora = new SimpleDateFormat("HH");
 //	        
 //	        dateFormat.format(fechaIngreso);
 //	        dateFormat.format(fechaSalida);
 //	       formatoHora.format( dateFormat.format(fechaIngreso)).toString();
-	        //damos formato en yyyy-MM-dd H:m:s y luego a horas y calculamos diferencia
-	       
-	  int cantidadHorasInicio =    Integer.parseInt(formatoHora.format( fechaIngreso));
-	  int cantidadHorasFin =   Integer.parseInt(formatoHora.format(fechaSalida));
-      int diferencia= cantidadHorasInicio-cantidadHorasFin;
-      
-	        
-	        return diferencia;
+		// damos formato en yyyy-MM-dd H:m:s y luego a horas y calculamos diferencia
 
-	    }
-	    
-		public String devuelveTipoDeVehiculo(String tipoVehiculo) {
-			String tipoAutomovil = tipoVehiculo;
-			if (tipoAutomovil == AUTO) {
-				return AUTO;
-			} else {
-				return MOTO;
-			}
+		int cantidadHorasInicio = Integer.parseInt(formatoHora.format(fechaIngreso));
+		int cantidadHorasFin = Integer.parseInt(formatoHora.format(fechaSalida));
+		int diferencia = cantidadHorasInicio - cantidadHorasFin;
+
+		return diferencia;
+
+	}
+
+	public String devuelveTipoDeVehiculo(String tipoVehiculo) {
+		String tipoAutomovil = tipoVehiculo;
+		if (tipoAutomovil == AUTO) {
+			return AUTO;
+		} else {
+			return MOTO;
 		}
-
+	}
 
 }

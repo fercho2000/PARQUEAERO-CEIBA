@@ -16,9 +16,6 @@ public class Vehiculo {
 
 	public Vehiculo(String placa, String tipoVehiculo, String cilindraje, String marca, String modelo) {
 
-		ValidarArgumentosVehiculo.validarObligatorios(placa, tipoVehiculo, cilindraje, marca, modelo,
-				TODOS_LOS_DATOS_OBLIGATORIOS);
-
 		this.placa = placa;
 		this.tipoVehiculo = tipoVehiculo;
 		this.cilindraje = cilindraje;
@@ -66,5 +63,4 @@ public class Vehiculo {
 		this.modelo = modelo;
 	}
 
-	
 }
