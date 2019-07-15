@@ -9,9 +9,10 @@ public class Vehiculo {
 	private String cilindraje;
 	private String marca;
 	private String modelo;
-
+	
+	
 	public Vehiculo() {
-
+		
 	}
 
 	public Vehiculo(String placa, String tipoVehiculo, String cilindraje, String marca, String modelo) {

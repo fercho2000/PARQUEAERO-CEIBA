@@ -1,8 +1,11 @@
 package com.ceiba.servicio;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import com.ceiba.excepcion.ExcepcionNoExisteId;
 import com.ceiba.modelo.HistorialParqueo;
@@ -31,38 +34,52 @@ public class ServicioHistorialParqueaderoSalida {
 		this.repositorioHistorial = repositorioHistorial;
 	}
 
-	public void ejecutarparqueo(HistorialParqueo historial) {
-		
-		float valorTotalAPagar =0;
-//		validarExistenciaHistorial(historial.getId());
+	public void ejecutarRetirarParqueo(HistorialParqueo historial) {
+
+		float valorTotalAPagar = 0;
 		Date fechaSalida = historial.getFechaSalida();
 		if (fechaSalida == null) {
 			fechaSalida = new Date();
 		}
-		 valorTotalAPagar = calcularPagoParqueo(historial.getFechaIngreso(), fechaSalida, historial.getVehiculo().getPlaca(),
-				historial.getVehiculo().getTipoVehiculo());
+		valorTotalAPagar = calcularPagoParqueo(historial.getFechaIngreso(), fechaSalida,
+				historial.getVehiculo().getPlaca(), historial.getVehiculo().getTipoVehiculo(),historial.getVehiculo().getCilindraje());
 
 		historial.setPago(valorTotalAPagar);
+		System.out.println("El valor a pagar es : "+valorTotalAPagar);
 		historial.setFechaSalida(fechaSalida);
+
+		this.repositorioHistorial.actualizarHistorialAlRetirar(historial);
+	}
+	
+	
+	public HistorialParqueo obtenerHistorialParqueo(String placa) {
 		
-		 this.repositorioHistorial.actualizarHistorial(historial);
+
+	return this.repositorioHistorial.traerElHistorialParqueo(placa);
+	
+	}
+	
+	public boolean consultarSalidaVehiculo(String placa) {
+		return this.repositorioHistorial.consultarSalidaVehiculo(placa);
 	}
 
-	private void validarExistenciaHistorial(int id) {
-		boolean existe = this.repositorioHistorial.existeHistorial(id);
-		if (!existe) {
-			throw new ExcepcionNoExisteId(NO_EXISTE_UN_REGISTRO_CON_ESE_ID);
-		}
+	public boolean consultarVehiculo(String placa) {
+		return this.repositorioHistorial.existeParqueovehiculo(placa);
 	}
+	
 
-	public float calcularPagoParqueo(Date fechaIngreso, Date fechaSalida, String placa, String tipoVehiculo) {
+	public float calcularPagoParqueo(Date fechaIngreso, Date fechaSalida, String placa, String tipoVehiculo, String valorCilindraje) {
 		float pago = 0;
 
-		int cilindraje = this.repositorioHistorial.devuelveCilindraje(placa);
+		int cilindraje = Integer.parseInt(valorCilindraje);
+		System.out.println("El cilindraje de dicho vehiculo es : "+cilindraje);
 		String tipo = devuelveTipoDeVehiculo(tipoVehiculo);
 		int horas = obtenerHorasTrascurridas(fechaIngreso, fechaSalida);
-
+	System.out.println("Las horas transcurridas fueron : "+horas);
 		if (tipo.equals(MOTO)) {
+			if(horas == 0 && cilindraje>CILINDRAJE_MAXIMO) {
+				pago=VALOR_HORA_MOTO + VALOR_CILINDRAJE;
+			}
 
 			if (cilindraje > CILINDRAJE_MAXIMO) {
 				pago = pago + VALOR_CILINDRAJE;
@@ -114,24 +131,24 @@ public class ServicioHistorialParqueaderoSalida {
 
 	}
 	
-	public HistorialParqueo obtenerHistorialParqueo(String placaVehiculo) {
-		return this.repositorioHistorial.obtenerHistorialParqueo(placaVehiculo);
-	}
+
 
 	public int obtenerHorasTrascurridas(Date fechaIngreso, Date fechaSalida) {
-//	        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd H:m:s");
-		DateFormat formatoHora = new SimpleDateFormat("HH");
-//	        
-//	        dateFormat.format(fechaIngreso);
-//	        dateFormat.format(fechaSalida);
-//	       formatoHora.format( dateFormat.format(fechaIngreso)).toString();
-		// damos formato en yyyy-MM-dd H:m:s y luego a horas y calculamos diferencia
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd H:m:s");
+        
+        long milliseconds = fechaIngreso.getTime() - fechaSalida.getTime();
+        
+        int seconds = (int) (milliseconds / 1000) % 60;
+        int minutes = (int) ((milliseconds / (1000 * 60)) % 60);
+        int hours = (int) ((milliseconds / (1000 * 60 * 60)) % 24);
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.SECOND, seconds);
+        c.set(Calendar.MINUTE, minutes);
+        c.set(Calendar.HOUR_OF_DAY, hours);
+         
+        System.out.println(" seconds : "+seconds +" minutes : "+minutes +" hours :"+hours);
+        return hours;
 
-		int cantidadHorasInicio = Integer.parseInt(formatoHora.format(fechaIngreso));
-		int cantidadHorasFin = Integer.parseInt(formatoHora.format(fechaSalida));
-		int diferencia = cantidadHorasInicio - cantidadHorasFin;
-
-		return diferencia;
 
 	}
 
@@ -142,6 +159,11 @@ public class ServicioHistorialParqueaderoSalida {
 		} else {
 			return MOTO;
 		}
+	}
+	
+	
+	public List<HistorialParqueo> consultarVehiculosParqueados(){
+		return this.repositorioHistorial.consultarVehiculosParqueados();
 	}
 
 }

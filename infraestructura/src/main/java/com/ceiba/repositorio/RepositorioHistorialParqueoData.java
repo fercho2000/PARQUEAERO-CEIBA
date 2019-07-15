@@ -1,11 +1,14 @@
 package com.ceiba.repositorio;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
+import com.ceiba.builderparqueo.BuilderHistorialParqueo;
 import com.ceiba.crudrepository.CrudHistorialParqueoRepository;
 import com.ceiba.entity.EntityHistorialParqueo;
 import com.ceiba.entity.EntityVehiculo;
@@ -23,83 +26,101 @@ public class RepositorioHistorialParqueoData implements RepositorioHistorialParq
 	}
 
 	@Override
-	public HistorialParqueo obtenerHistorialParqueo(String placa) {
-		EntityHistorialParqueo parqueoEntity = repositorioParqueo.findByVehiculoPlaca(placa);
-
-		parqueoEntity.getId();
-		parqueoEntity.getFechaIngreso();
-		parqueoEntity.getFechaSalida();
-		parqueoEntity.getPago();
-		parqueoEntity.getVehiculo();
-
-		Vehiculo vehiculo = new Vehiculo(parqueoEntity.getVehiculo().getPlaca(),
-				parqueoEntity.getVehiculo().getTipovehiculo(), parqueoEntity.getVehiculo().getCilindraje(),
-				parqueoEntity.getVehiculo().getMarca(), parqueoEntity.getVehiculo().getModelo());
-
-		HistorialParqueo historial = new HistorialParqueo(parqueoEntity.getFechaIngreso(),
-				parqueoEntity.getFechaSalida(), parqueoEntity.getPago(), vehiculo);
-
-		return historial;
-	}
-
-	@Override
-	public void actualizarHistorial(HistorialParqueo historial) {
-
-		EntityHistorialParqueo entityHistorial = this.repositorioParqueo
-				.findByVehiculoPlaca(historial.getVehiculo().getPlaca());
-		entityHistorial.setFechaSalida(historial.getFechaSalida());
-		entityHistorial.setPago(historial.getPago());
-		this.repositorioParqueo.save(entityHistorial);
-
-	}
-
-	@Override
-	public Collection<HistorialParqueo> listar() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public void crear(HistorialParqueo historialParqueo) {
 
-		Vehiculo vehiculo = historialParqueo.getVehiculo();
-		EntityVehiculo entityVehiculo = new EntityVehiculo(vehiculo.getPlaca(), vehiculo.getTipoVehiculo(),
-				vehiculo.getCilindraje(), vehiculo.getMarca(), vehiculo.getModelo());
-
-		EntityHistorialParqueo entidadHistorialParqueo = new EntityHistorialParqueo(historialParqueo.getFechaIngreso(),
-				historialParqueo.getFechaSalida(), historialParqueo.getPago(), entityVehiculo);
-		this.repositorioParqueo.save(entidadHistorialParqueo);
-
+		EntityHistorialParqueo parqueoEntity = this.repositorioParqueo
+				.findByVehiculoPlaca(historialParqueo.getVehiculo().getPlaca());
+		if (parqueoEntity == null) {
+			this.repositorioParqueo.save(BuilderHistorialParqueo.convertirAEntidad(historialParqueo));
+		} else {
+			this.repositorioParqueo.delete(parqueoEntity);
+			this.repositorioParqueo.save(BuilderHistorialParqueo.convertirAEntidad(historialParqueo));
+		}
 	}
 
 	@Override
-	public boolean existe(String placaVehiculo) {
-		// TODO Auto-generated method stub
-		return false;
+	public void actualizarHistorialAlRetirar(HistorialParqueo historialParqueo) {
+		EntityHistorialParqueo parqueoEntity = this.repositorioParqueo
+				.findByVehiculoPlaca(historialParqueo.getVehiculo().getPlaca());
+		parqueoEntity.setFechaSalida(historialParqueo.getFechaSalida());
+		parqueoEntity.setPago(historialParqueo.getPago());
+		this.repositorioParqueo.save(parqueoEntity);
 	}
+	
+	@Override
+	public HistorialParqueo traerElHistorialParqueo(String placa) {
+		EntityHistorialParqueo parqueoEntity = repositorioParqueo.findByVehiculoPlaca(placa);
+		return BuilderHistorialParqueo.convertirAModelo(parqueoEntity);
+	}
+
+     @Override
+    public boolean existeParqueovehiculo(String placa) {
+
+    	 boolean vehiculoExiste = false;
+ 		
+ 		if(this.repositorioParqueo.findByVehiculoPlaca(placa) != null) {
+ 			vehiculoExiste = true;
+ 		} 
+ 		
+ 		return vehiculoExiste;
+    
+    }
+	
+ 	@Override
+ 	public boolean consultarSalidaVehiculo(String placa) {
+ 		boolean vehiculoSalio = false;
+ 		EntityHistorialParqueo parqueoEntity = this.repositorioParqueo.findByVehiculoPlaca(placa);
+
+ 		if (BuilderHistorialParqueo.convertirAModelo(parqueoEntity).getFechaSalida() != null) {
+ 			vehiculoSalio = true;
+ 		}
+
+ 		return vehiculoSalio;
+ 	}
+ 	
+	@Override
+	public boolean existe(Vehiculo vehiculo) {
+		boolean elVehiculoExiste = true;
+
+		if (this.repositorioParqueo.findByVehiculoPlaca(vehiculo.getPlaca()) != null) {
+
+			elVehiculoExiste = true;
+		} else {
+			elVehiculoExiste = false;
+		}
+
+		return elVehiculoExiste;
+
+	}
+	
 
 	@Override
-	public boolean existeHistorial(int id) {
-		// TODO Auto-generated method stub
-		return false;
+	public int cantidadVehiculos(String tipoVehiculo) {
+		int contadorVehiculos = 0;
+		Iterable<EntityHistorialParqueo> listaVehiculos = this.repositorioParqueo.findByVehiculoTipovehiculo(tipoVehiculo);
+
+		for (EntityHistorialParqueo vehiculo : listaVehiculos) {
+			if (vehiculo.getFechaSalida() == null) {
+				contadorVehiculos++;
+			}
+		}
+		return contadorVehiculos;
 	}
+	
 
 	@Override
-	public int cantidadVehiculos(String tipo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	public List<HistorialParqueo> consultarVehiculosParqueados() {
 
-	@Override
-	public String devuelveTipo(String placa) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		List<HistorialParqueo> listaParqueo = new ArrayList<>();
+		Iterable<EntityHistorialParqueo> listaParqueosEntities = this.repositorioParqueo.findAll();
 
-	@Override
-	public int devuelveCilindraje(String placa) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+		for (EntityHistorialParqueo parqueoEntity : listaParqueosEntities) {
+			listaParqueo.add(BuilderHistorialParqueo.convertirAModelo(parqueoEntity));
+		}
 
+		return listaParqueo;
+	}
+	
+
+	
 }

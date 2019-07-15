@@ -23,8 +23,15 @@ public class ServicioBean {
 	
 	@Bean
 	public ServicioHistorialParqueaderoSalida salirparqueo(RepositorioHistorialParqueo repositorioHistorial, RepositorioVehiculo repositorioVehiculo) {
-	return new ServicioHistorialParqueaderoSalida();
+	return new ServicioHistorialParqueaderoSalida(repositorioHistorial);
 	}
+	
+
+		
+//		@Bean
+//		public ServicioParqueadero crearServicio(ParqueoRepositorio parqueoFachadaInterface, VehiculoRepositorio vehiculoFachadaInterface) {
+//			return new ServicioParqueadero(vehiculoFachadaInterface, parqueoFachadaInterface);
+	
 	
 //	
 }

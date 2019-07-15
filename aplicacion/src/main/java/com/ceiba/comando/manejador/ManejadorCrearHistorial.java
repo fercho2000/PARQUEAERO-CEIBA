@@ -2,6 +2,7 @@ package com.ceiba.comando.manejador;
 
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.ceiba.modelo.HistorialParqueo;
@@ -14,6 +15,7 @@ public class ManejadorCrearHistorial {
 
 	private final ServicioHistorialParqueo servicioCrearHistorial;
 
+	@Autowired
 	public ManejadorCrearHistorial(ServicioHistorialParqueo servicioCrearHistorial) {
 		this.servicioCrearHistorial = servicioCrearHistorial;
 	}
