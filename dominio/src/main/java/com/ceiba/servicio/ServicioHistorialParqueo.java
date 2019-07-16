@@ -13,8 +13,6 @@ import com.ceiba.puerto.repositorio.RepositorioVehiculo;
 
 import java.time.LocalDateTime;
 
-import org.mockito.cglib.core.Local;
-
 public class ServicioHistorialParqueo {
 
 	private static final String NO_HAY_MAS_CUPOS_PARA_MOTO = "No hay más  cupos disponibles para moto";
