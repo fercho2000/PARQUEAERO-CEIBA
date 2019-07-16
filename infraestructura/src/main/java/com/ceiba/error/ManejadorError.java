@@ -12,7 +12,6 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import com.ceiba.excepcion.ExcepcionCantidadVehiculos;
 import com.ceiba.excepcion.ExcepcionLongitudPlaca;
-import com.ceiba.excepcion.ExcepcionLongitudValor;
 import com.ceiba.excepcion.ExcepcionTipoVehiculoInvalido;
 import com.ceiba.excepcion.ExcepcionValoresObligatorios;
 import com.ceiba.excepcion.ExcepcionVehiculoParqueado;
@@ -32,7 +31,7 @@ public class ManejadorError extends ResponseEntityExceptionHandler {
 		CODIGOS_ESTADO.put(ExcepcionTipoVehiculoInvalido.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
 		CODIGOS_ESTADO.put(ExcepcionLongitudPlaca.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
 		CODIGOS_ESTADO.put(ExcepcionValoresObligatorios.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
-		CODIGOS_ESTADO.put(ExcepcionLongitudValor.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
+
 		CODIGOS_ESTADO.put(ExcepcionVehiculoParqueado.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
 
 	}
