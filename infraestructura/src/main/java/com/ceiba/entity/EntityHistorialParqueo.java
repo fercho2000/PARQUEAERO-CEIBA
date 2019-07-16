@@ -1,9 +1,6 @@
 package com.ceiba.entity;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,12 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import org.hibernate.annotations.ManyToAny;
-
-import com.ceiba.modelo.Vehiculo;
-
 @Entity(name ="HistorialParqueo")
-public class EntityHistorialParqueo implements Serializable {
+public class EntityHistorialParqueo {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

@@ -1,17 +1,12 @@
 package com.ceiba.repositorio;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import org.springframework.stereotype.Repository;
 
 import com.ceiba.builderparqueo.BuilderHistorialParqueo;
 import com.ceiba.crudrepository.CrudHistorialParqueoRepository;
 import com.ceiba.entity.EntityHistorialParqueo;
-import com.ceiba.entity.EntityVehiculo;
 import com.ceiba.modelo.HistorialParqueo;
 import com.ceiba.modelo.Vehiculo;
 import com.ceiba.puerto.repositorio.RepositorioHistorialParqueo;

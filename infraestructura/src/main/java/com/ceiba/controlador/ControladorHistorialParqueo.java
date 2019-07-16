@@ -15,7 +15,6 @@ import com.ceiba.comando.manejador.ManejadorCrearHistorial;
 import com.ceiba.comando.manejador.ManejadorSalidaVehiculosHistorial;
 import com.ceiba.excepcion.ExcepcionVehiculoParqueado;
 import com.ceiba.modelo.HistorialParqueo;
-import com.ceiba.modelo.Vehiculo;
 
 @RestController
 public class ControladorHistorialParqueo {

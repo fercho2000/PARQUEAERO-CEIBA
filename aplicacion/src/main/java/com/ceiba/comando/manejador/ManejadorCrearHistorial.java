@@ -3,7 +3,6 @@ package com.ceiba.comando.manejador;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.ceiba.modelo.HistorialParqueo;
 import com.ceiba.modelo.Vehiculo;
 
 import com.ceiba.servicio.ServicioHistorialParqueo;

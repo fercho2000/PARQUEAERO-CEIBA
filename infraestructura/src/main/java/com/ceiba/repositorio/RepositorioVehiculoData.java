@@ -5,7 +5,6 @@ import java.util.Collection;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.ceiba.crudrepository.CrudVehiculoRepository;
 import com.ceiba.entity.EntityVehiculo;
 import com.ceiba.modelo.Vehiculo;
 import com.ceiba.puerto.repositorio.RepositorioVehiculo;
