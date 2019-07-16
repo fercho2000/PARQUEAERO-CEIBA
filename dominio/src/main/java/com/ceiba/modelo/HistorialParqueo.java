@@ -10,6 +10,7 @@ public class HistorialParqueo {
 	private float pago;
 	private Vehiculo vehiculo;
 
+	
 	public HistorialParqueo() {
 
 	}

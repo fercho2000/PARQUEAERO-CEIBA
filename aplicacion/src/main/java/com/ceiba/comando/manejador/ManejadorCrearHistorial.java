@@ -1,7 +1,5 @@
 package com.ceiba.comando.manejador;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -20,9 +18,10 @@ public class ManejadorCrearHistorial {
 		this.servicioCrearHistorial = servicioCrearHistorial;
 	}
 
-	public void ejecutar(Vehiculo vehiculo) {
+	public void ejecutar(ComandoVehiculo comandoVehiculo) {
 
-		this.servicioCrearHistorial.ejecutar(vehiculo);
+		this.servicioCrearHistorial.ejecutar(new Vehiculo(comandoVehiculo.getPlaca(), comandoVehiculo.getTipoVehiculo(),
+				comandoVehiculo.getCilindraje(), comandoVehiculo.getMarca(), comandoVehiculo.getModelo()));
 
 	}
 

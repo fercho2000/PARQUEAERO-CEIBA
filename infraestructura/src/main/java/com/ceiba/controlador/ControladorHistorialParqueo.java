@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ceiba.comando.manejador.ComandoVehiculo;
 import com.ceiba.comando.manejador.ManejadorCrearHistorial;
 import com.ceiba.comando.manejador.ManejadorSalidaVehiculosHistorial;
 import com.ceiba.excepcion.ExcepcionVehiculoParqueado;
@@ -31,9 +32,9 @@ public class ControladorHistorialParqueo {
 	}
 
 	@PostMapping("/registrarHistorial")
-	public void crearHistorialParqueadero(@RequestBody Vehiculo vehiculo) {
+	public void crearHistorialParqueadero(@RequestBody ComandoVehiculo comandoVehiculo) {
 
-		this.manejadorCrearHistorialVehiculo.ejecutar(vehiculo);
+		this.manejadorCrearHistorialVehiculo.ejecutar(comandoVehiculo);
 	}
 
 	@GetMapping("/obtenervehiculos")

@@ -18,7 +18,6 @@ public class ServicioHistorialParqueaderoSalida {
 	private static final int CILINDRAJE_MAXIMO = 500;
 	private static final String MOTO = "moto";
 	private static final String AUTO = "auto";
-	private final static String NO_EXISTE_UN_REGISTRO_CON_ESE_ID = "No existe un registro con este id";
 
 	private RepositorioHistorialParqueo repositorioHistorial;
 
@@ -65,10 +64,10 @@ public class ServicioHistorialParqueaderoSalida {
 			String tipoVehiculo, String valorCilindraje) {
 		float pago = 0;
 		int cilindraje = Integer.parseInt(valorCilindraje);
-		System.out.println("El cilindraje de dicho vehiculo es : " + cilindraje);
+
 		String tipo = devuelveTipoDeVehiculo(tipoVehiculo);
 		int horas = obtenerHorasTrascurridas(fechaIngreso, fechaSalida);
-		System.out.println("Las horas transcurridas fueron : " + horas);
+
 		if (tipo.equals(MOTO)) {
 
 			if (cilindraje > CILINDRAJE_MAXIMO) {
@@ -145,7 +144,7 @@ public class ServicioHistorialParqueaderoSalida {
 
 	public String devuelveTipoDeVehiculo(String tipoVehiculo) {
 		String tipoAutomovil = tipoVehiculo;
-		if (tipoAutomovil == AUTO) {
+		if (tipoAutomovil.equals(AUTO)) {
 			return AUTO;
 		} else {
 			return MOTO;

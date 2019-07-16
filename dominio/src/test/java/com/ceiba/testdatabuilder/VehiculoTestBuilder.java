@@ -5,17 +5,17 @@ import com.ceiba.modelo.Vehiculo;
 public class VehiculoTestBuilder {
 
 	private String placa;
-	private String tipo; 
+	private String tipoVehiculo;
 	private String cilindraje;
-	private String modelo;
-	private String marca;	
+	private String marca;
+	private String modelo;	
     
     public VehiculoTestBuilder() {
 		placa = "aed585";
-		tipo = "auto";
-		cilindraje = "500";
-		modelo = "j21";
-		marca = "yamaha";
+		tipoVehiculo = "moto";
+		cilindraje = "600";
+		modelo = "2003";
+		marca = "pulsar";
 	}
     
     public VehiculoTestBuilder conPlaca(String placa) {
@@ -23,8 +23,8 @@ public class VehiculoTestBuilder {
     	return this;
     }
     
-    public VehiculoTestBuilder conTipo(String tipo) {
-    	this.tipo = tipo;
+    public VehiculoTestBuilder conTipoVehiculo(String tipoVehiculo) {
+    	this.tipoVehiculo = tipoVehiculo;
     	return this;
     }
     
@@ -44,6 +44,6 @@ public class VehiculoTestBuilder {
     }
     
     public Vehiculo build() {
-    	return new  Vehiculo(placa, tipo, cilindraje, marca, modelo) ;
+    	return new  Vehiculo(placa, tipoVehiculo, cilindraje, marca, modelo) ;
     }
 }
