@@ -34,7 +34,7 @@ public class ServicioHistorialSaliaTest {
 
 	@Test
 	public void obtenerHorasTranscurridas30SegundosTest() {
-		// arrange
+		// arranges
 		LocalDateTime fechaIngreso = LocalDateTime.now();
 		LocalDateTime fechaSalida = LocalDateTime.now().plusSeconds(30);
 		RepositorioHistorialParqueo repositorioHistorialP = mock(RepositorioHistorialParqueo.class);
@@ -48,7 +48,7 @@ public class ServicioHistorialSaliaTest {
 	}
 
 	@Test
-	public void obtenerHorasTranscurridas8HorasY35minTest() {
+	public void obtenerHorasTranscurridas8HorasCon35minTest() {
 		// arrange
 		LocalDateTime fechaIngreso = LocalDateTime.now();
 		LocalDateTime fechaSalida = LocalDateTime.now().plusHours(8).plusMinutes(35);
@@ -81,7 +81,7 @@ public class ServicioHistorialSaliaTest {
 	}
 
 	@Test
-	public void calcularPago1DiaMotoConCilindrajeBajoTest() {
+	public void calcularValorPago1DiaMotoConCilindrajeBajoTest() {
 		// arrange
 		LocalDateTime fechaIngreso = LocalDateTime.now();
 		LocalDateTime fechaSalida = LocalDateTime.now().plusDays(1);
@@ -104,7 +104,7 @@ public class ServicioHistorialSaliaTest {
 	}
 
 	@Test
-	public void calcularPago1DiaMotoConCilindrajeAltoTest() {
+	public void calcularValorPago1DiaMotoConCilindrajeAltoTest() {
 		// arrange
 		LocalDateTime fechaIngreso = LocalDateTime.now();
 		LocalDateTime fechaSalida = LocalDateTime.now().plusDays(1);
@@ -127,13 +127,13 @@ public class ServicioHistorialSaliaTest {
 	}
 
 	@Test
-	public void calcularPago1DiaAutoTest() {
+	public void calcularValorPago1DiaAutoTest() {
 		// arrange
 
 		LocalDateTime fechaIngreso = LocalDateTime.now();
 		LocalDateTime fechaSalida = LocalDateTime.now().plusDays(1);
 		Vehiculo vehiculo = new VehiculoTestBuilder().build();
-		
+
 		vehiculo.setPlaca(PLACA_AUTO);
 		vehiculo.setTipoVehiculo(TIPO_VEHICULO_ES_AUTO);
 		vehiculo.setCilindraje(CILINDRAJE_ALTO);
