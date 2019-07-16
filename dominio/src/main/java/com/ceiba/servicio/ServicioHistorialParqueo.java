@@ -13,6 +13,8 @@ import com.ceiba.puerto.repositorio.RepositorioVehiculo;
 
 import java.time.LocalDateTime;
 
+import org.mockito.cglib.core.Local;
+
 public class ServicioHistorialParqueo {
 
 	private static final String NO_HAY_MAS_CUPOS_PARA_MOTO = "No hay más  cupos disponibles para moto";
@@ -41,12 +43,12 @@ public class ServicioHistorialParqueo {
 		int totalCobrar = 0;
 		LocalDateTime fechaIngreso = LocalDateTime.now();
 		LocalDateTime fechaDeSalida = null;
-
+		DayOfWeek elDiaDeHoys = LocalDateTime.now().getDayOfWeek();
 		HistorialParqueo historiaParqueo = new HistorialParqueo(fechaIngreso, fechaDeSalida, totalCobrar, vehiculo);
 
 		validarVehiculoParqueado(vehiculo.getPlaca());
 		validarCupos(historiaParqueo);
-		validarPlacaParaDiasHabiles(vehiculo.getPlaca(), LocalDateTime.now().getDayOfWeek());
+		validarPlacaParaDiasHabiles(vehiculo.getPlaca(), elDiaDeHoys);
 
 		this.repositorioVehiculo.crear(vehiculo);
 		this.repositorioHistorial.crear(historiaParqueo);
@@ -80,8 +82,8 @@ public class ServicioHistorialParqueo {
 		if (tipo.equals(MOTO) && cantidadVehiculos > NUMERO_MAXIMO_PARA_MOTO) {
 			throw new ExcepcionCantidadVehiculos(NO_HAY_MAS_CUPOS_PARA_MOTO);
 		} else if (tipo.equals(AUTO) && cantidadVehiculos > NUMERO_MAXIMO_PARA_AUTO) {
-			
-				throw new ExcepcionCantidadVehiculos(NO_HAY_MAS_CUPOS_PARA_AUTO);
+
+			throw new ExcepcionCantidadVehiculos(NO_HAY_MAS_CUPOS_PARA_AUTO);
 		}
 	}
 

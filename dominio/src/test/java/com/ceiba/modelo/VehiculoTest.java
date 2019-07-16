@@ -14,7 +14,7 @@ public class VehiculoTest {
 	private static final String MODELO = "2011";
 
 	@Test
-	public void validarLongitudPlacaEnModelo() {
+	public void validarLongitudPlacaEnModeloVehiculo() {
 		// Arrange
 		VehiculoTestBuilder vehiculoTestBuilder = new VehiculoTestBuilder().conPlaca(PLACA).conCilindraje(CILINDRAJE)
 				.conMarca(MARCA).conModelo(MODELO).conTipoVehiculo(TIPO_MOTO);
@@ -29,7 +29,7 @@ public class VehiculoTest {
 	}
 
 	@Test
-	public void validarArgumentosEnModelo() {
+	public void validarArgumentosVaciosEnModeloVehiculo() {
 		// Arrange
 		VehiculoTestBuilder vehiculoTestBuilder = new VehiculoTestBuilder().conPlaca(null).conCilindraje(null)
 				.conMarca(null).conModelo(null).conTipoVehiculo(null);
