@@ -1,12 +1,12 @@
 package com.ceiba.modelo;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class HistorialParqueo {
 
 	private int id;
-	private Date fechaIngreso;
-	private Date fechaSalida;
+	private LocalDateTime fechaIngreso;
+	private LocalDateTime fechaSalida;
 	private float pago;
 	private Vehiculo vehiculo;
 
@@ -14,7 +14,7 @@ public class HistorialParqueo {
 
 	}
 
- public HistorialParqueo(Date fechaIngreso, Date fechaSalida, float pago, Vehiculo vehiculo) {
+	public HistorialParqueo(LocalDateTime fechaIngreso, LocalDateTime fechaSalida, float pago, Vehiculo vehiculo) {
 
 		this.fechaIngreso = fechaIngreso;
 		this.fechaSalida = fechaSalida;
@@ -30,19 +30,19 @@ public class HistorialParqueo {
 		this.id = id;
 	}
 
-	public Date getFechaIngreso() {
+	public LocalDateTime getFechaIngreso() {
 		return fechaIngreso;
 	}
 
-	public void setFechaIngreso(Date fechaIngreso) {
+	public void setFechaIngreso(LocalDateTime fechaIngreso) {
 		this.fechaIngreso = fechaIngreso;
 	}
 
-	public Date getFechaSalida() {
+	public LocalDateTime getFechaSalida() {
 		return fechaSalida;
 	}
 
-	public void setFechaSalida(Date fechaSalida) {
+	public void setFechaSalida(LocalDateTime fechaSalida) {
 		this.fechaSalida = fechaSalida;
 	}
 

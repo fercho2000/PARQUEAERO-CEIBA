@@ -33,8 +33,8 @@ public class ManejadorSalidaVehiculosHistorial {
 		this.servicioSalidaHistorial.ejecutarRetirarParqueo(historialPraqueo);
 	}
 	
-	public List<HistorialParqueo> consultarVehiculosParqueados() {
-		return this.servicioSalidaHistorial.consultarVehiculosParqueados();
+	public List<HistorialParqueo> listaDeVehiculosParqueados() {
+		return this.servicioSalidaHistorial.consultarListarVehiculosParqueados();
 	}
 	
 }

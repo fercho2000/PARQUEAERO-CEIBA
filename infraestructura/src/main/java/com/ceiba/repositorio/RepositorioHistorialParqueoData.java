@@ -28,7 +28,7 @@ public class RepositorioHistorialParqueoData implements RepositorioHistorialParq
 	@Override
 	public void crear(HistorialParqueo historialParqueo) {
 
-		EntityHistorialParqueo parqueoEntity = this.repositorioParqueo
+	EntityHistorialParqueo parqueoEntity = this.repositorioParqueo
 				.findByVehiculoPlaca(historialParqueo.getVehiculo().getPlaca());
 		if (parqueoEntity == null) {
 			this.repositorioParqueo.save(BuilderHistorialParqueo.convertirAEntidad(historialParqueo));
@@ -46,38 +46,38 @@ public class RepositorioHistorialParqueoData implements RepositorioHistorialParq
 		parqueoEntity.setPago(historialParqueo.getPago());
 		this.repositorioParqueo.save(parqueoEntity);
 	}
-	
+
 	@Override
 	public HistorialParqueo traerElHistorialParqueo(String placa) {
 		EntityHistorialParqueo parqueoEntity = repositorioParqueo.findByVehiculoPlaca(placa);
 		return BuilderHistorialParqueo.convertirAModelo(parqueoEntity);
 	}
 
-     @Override
-    public boolean existeParqueovehiculo(String placa) {
+	@Override
+	public boolean existeParqueovehiculo(String placa) {
 
-    	 boolean vehiculoExiste = false;
- 		
- 		if(this.repositorioParqueo.findByVehiculoPlaca(placa) != null) {
- 			vehiculoExiste = true;
- 		} 
- 		
- 		return vehiculoExiste;
-    
-    }
-	
- 	@Override
- 	public boolean consultarSalidaVehiculo(String placa) {
- 		boolean vehiculoSalio = false;
- 		EntityHistorialParqueo parqueoEntity = this.repositorioParqueo.findByVehiculoPlaca(placa);
+		boolean vehiculoExiste = false;
 
- 		if (BuilderHistorialParqueo.convertirAModelo(parqueoEntity).getFechaSalida() != null) {
- 			vehiculoSalio = true;
- 		}
+		if (this.repositorioParqueo.findByVehiculoPlaca(placa) != null) {
+			vehiculoExiste = true;
+		}
 
- 		return vehiculoSalio;
- 	}
- 	
+		return vehiculoExiste;
+
+	}
+
+	@Override
+	public boolean consultarSalidaVehiculo(String placa) {
+		boolean vehiculoSalio = false;
+		EntityHistorialParqueo parqueoEntity = this.repositorioParqueo.findByVehiculoPlaca(placa);
+
+		if (BuilderHistorialParqueo.convertirAModelo(parqueoEntity).getFechaSalida() != null) {
+			vehiculoSalio = true;
+		}
+
+		return vehiculoSalio;
+	}
+
 	@Override
 	public boolean existe(Vehiculo vehiculo) {
 		boolean elVehiculoExiste = true;
@@ -92,13 +92,14 @@ public class RepositorioHistorialParqueoData implements RepositorioHistorialParq
 		return elVehiculoExiste;
 
 	}
-	
 
 	@Override
 	public int cantidadVehiculos(String tipoVehiculo) {
 		int contadorVehiculos = 0;
-		Iterable<EntityHistorialParqueo> listaVehiculos = this.repositorioParqueo.findByVehiculoTipovehiculo(tipoVehiculo);
-
+		Iterable<EntityHistorialParqueo> listaVehiculos = this.repositorioParqueo
+				.findByVehiculoTipovehiculo(tipoVehiculo);
+		
+		System.out.println("Esta lista vehiculos trae: " + listaVehiculos);
 		for (EntityHistorialParqueo vehiculo : listaVehiculos) {
 			if (vehiculo.getFechaSalida() == null) {
 				contadorVehiculos++;
@@ -106,7 +107,6 @@ public class RepositorioHistorialParqueoData implements RepositorioHistorialParq
 		}
 		return contadorVehiculos;
 	}
-	
 
 	@Override
 	public List<HistorialParqueo> consultarVehiculosParqueados() {
@@ -120,7 +120,5 @@ public class RepositorioHistorialParqueoData implements RepositorioHistorialParq
 
 		return listaParqueo;
 	}
-	
 
-	
 }

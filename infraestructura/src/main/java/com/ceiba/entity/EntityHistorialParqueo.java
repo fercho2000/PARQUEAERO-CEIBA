@@ -1,6 +1,7 @@
 package com.ceiba.entity;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -20,8 +21,8 @@ public class EntityHistorialParqueo implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private Date fechaIngreso;
-	private Date fechaSalida;
+	private LocalDateTime fechaIngreso;
+	private LocalDateTime fechaSalida;
 	private float pago;
 	
 	@ManyToOne
@@ -33,70 +34,51 @@ public class EntityHistorialParqueo implements Serializable {
 
 	}
 
+	public EntityHistorialParqueo( LocalDateTime fechaIngreso, LocalDateTime fechaSalida, float pago,
+			EntityVehiculo vehiculo) {
 	
-
-	public EntityHistorialParqueo( Date fechaIngreso, Date fechaSalida, float pago, EntityVehiculo vehiculo) {
 	
-		
 		this.fechaIngreso = fechaIngreso;
 		this.fechaSalida = fechaSalida;
 		this.pago = pago;
 		this.vehiculo = vehiculo;
 	}
-
-
 
 	public int getId() {
 		return id;
 	}
 
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-
-	public Date getFechaIngreso() {
+	public LocalDateTime getFechaIngreso() {
 		return fechaIngreso;
 	}
 
-
-	public void setFechaIngreso(Date fechaIngreso) {
+	public void setFechaIngreso(LocalDateTime fechaIngreso) {
 		this.fechaIngreso = fechaIngreso;
 	}
 
-
-	public Date getFechaSalida() {
+	public LocalDateTime getFechaSalida() {
 		return fechaSalida;
 	}
 
-
-	public void setFechaSalida(Date fechaSalida) {
+	public void setFechaSalida(LocalDateTime fechaSalida) {
 		this.fechaSalida = fechaSalida;
 	}
-
 
 	public float getPago() {
 		return pago;
 	}
 
-
 	public void setPago(float pago) {
 		this.pago = pago;
 	}
-
 
 	public EntityVehiculo getVehiculo() {
 		return vehiculo;
 	}
 
-
 	public void setVehiculo(EntityVehiculo vehiculo) {
 		this.vehiculo = vehiculo;
 	}
 
-
-	
-	
 	
 }

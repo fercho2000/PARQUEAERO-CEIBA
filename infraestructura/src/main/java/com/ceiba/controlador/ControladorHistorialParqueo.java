@@ -35,33 +35,29 @@ public class ControladorHistorialParqueo {
 
 		this.manejadorCrearHistorialVehiculo.ejecutar(vehiculo);
 	}
-	
-	
-	
+
 	@GetMapping("/obtenervehiculos")
 	public List<HistorialParqueo> consultarVehiculosParqueados() {
-		
-	
-		
-		return this.manejadorSalidas.consultarVehiculosParqueados();
+
+		return this.manejadorSalidas.listaDeVehiculosParqueados();
+
 	}
 
-	
 	@PutMapping("/retirar/{placa}")
 	public void sacarVehiculo(@PathVariable String placa) {
 
-		if(!this.manejadorSalidas.consultarVehiculo(placa)) {
+		if (!this.manejadorSalidas.consultarVehiculo(placa)) {
 			throw new ExcepcionVehiculoParqueado("El vehiculo no esta parqueao");
 		}
-		
-		if(this.manejadorSalidas.consultarSalidaVehiculo(placa)) {
+
+		if (this.manejadorSalidas.consultarSalidaVehiculo(placa)) {
 			throw new ExcepcionVehiculoParqueado("El vehiculo no esta parqueao");
 		}
-		
-	HistorialParqueo historialParqueo;
-			
-	historialParqueo = this.manejadorSalidas.obtenerParqueo(placa);
-			
+
+		HistorialParqueo historialParqueo;
+
+		historialParqueo = this.manejadorSalidas.obtenerParqueo(placa);
+
 //							
 		this.manejadorSalidas.retirarParqueo(historialParqueo);
 	}

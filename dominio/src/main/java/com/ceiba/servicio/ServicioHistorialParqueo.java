@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 
 public class ServicioHistorialParqueo {
 
-	private static final String REGISTRO_EXISTENTE = "Ya se encuentra registrado";
+
 	private static final String NO_HAY_MAS_CUPOS_PARA_MOTO = "No hay más  cupos disponibles para moto";
 	private static final String NO_HAY_MAS_CUPOS_PARA_AUTO = "No hay cupos disponibles para autos";
 	private static final String NO_PUEDE_INGRESAR_DIA_NO_HABIL = "El vehiculo no puede ingresar, dia no habil";
@@ -44,13 +44,13 @@ public class ServicioHistorialParqueo {
 
 	public void ejecutar(Vehiculo vehiculo) {
 		int totalCobrar = 0;
-
+		LocalDateTime fechaIngreso = LocalDateTime.now();
+		LocalDateTime fechaDeSalida = null;
 		validarCampoObligatorios(vehiculo.getPlaca(), vehiculo.getTipoVehiculo(), vehiculo.getCilindraje(),
 				vehiculo.getMarca(), vehiculo.getModelo(), TODOS_LOS_DATOS_OBLIGATORIOS);
 
-		HistorialParqueo historiaParqueo = new HistorialParqueo(new Date(), null, totalCobrar, vehiculo);
-		
-	
+		HistorialParqueo historiaParqueo = new HistorialParqueo(fechaIngreso, fechaDeSalida, totalCobrar, vehiculo);
+
 		validarVehiculoParqueado(vehiculo.getPlaca());
 		validarCupos(historiaParqueo);
 		validarPlacaParaDiasHabiles(vehiculo.getPlaca(), LocalDateTime.now().getDayOfWeek());
@@ -69,21 +69,17 @@ public class ServicioHistorialParqueo {
 		}
 	}
 
-
-
-
 //	public boolean consultarVehiculo(String placa) {
 //		return this.parqueoFachadaInterface.consultarVehiculo(placa);
 //	}
-	
-	//me verifica si este vehiculo ya se encuentra parqueado
-	
-	public void  validarVehiculoParqueado(String placa) {
-		
+
+	// me verifica si este vehiculo ya se encuentra parqueado
+
+	public void validarVehiculoParqueado(String placa) {
 
 		HistorialParqueo estaParqueado = this.repositorioHistorial.traerElHistorialParqueo(placa);
-		
-		if (estaParqueado != null  && estaParqueado.getFechaSalida() == null ) {
+
+		if (estaParqueado != null && estaParqueado.getFechaSalida() == null) {
 			throw new ExcepcionVehiculoParqueado(El_VEHICULO_YA_ESTA_PARQUEADO);
 		}
 
@@ -92,25 +88,17 @@ public class ServicioHistorialParqueo {
 	public void validarCupos(HistorialParqueo historial) {
 		String tipo = devuelveTipoDeVehiculo(historial.getVehiculo().getTipoVehiculo());
 		int cantidadVehiculos = this.repositorioHistorial.cantidadVehiculos(tipo);
-		if (cantidadVehiculos==0) {
-			cantidadVehiculos=1;
-		}
-	System.out.println("Los vehiculos hasta ahora son ::::  " +cantidadVehiculos);
+		System.out.println("Los vehiculos hasta ahora son ::::  " + cantidadVehiculos);
 		if (tipo.equals(MOTO)) {
 			if (cantidadVehiculos > NUMERO_MAXIMO_PARA_MOTO) {
 				throw new ExcepcionCantidadVehiculos(NO_HAY_MAS_CUPOS_PARA_MOTO);
 			}
 		} else if (tipo.equals(AUTO)) {
-			if(cantidadVehiculos > NUMERO_MAXIMO_PARA_AUTO) {
+			if (cantidadVehiculos > NUMERO_MAXIMO_PARA_AUTO) {
 				throw new ExcepcionCantidadVehiculos(NO_HAY_MAS_CUPOS_PARA_AUTO);
 			}
 		}
 	}
-	
-	//listo
-	
-
-	
 
 	public void validarPlacaParaDiasHabiles(String placa, DayOfWeek eldiaDeHoy) {
 		if (validaPrimeraLetra(placa) && hoyEsLunesODomingo(eldiaDeHoy)) {
@@ -137,8 +125,5 @@ public class ServicioHistorialParqueo {
 	public Boolean hoyEsLunesODomingo(DayOfWeek eldiaDeHoy) {
 		return eldiaDeHoy.equals(DayOfWeek.MONDAY) || eldiaDeHoy.equals(DayOfWeek.SUNDAY);
 	}
-	
-	
-
 
 }
