@@ -1,7 +1,5 @@
 package com.ceiba.repositorio;
 
-import java.util.Collection;
-
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -20,11 +18,7 @@ public class RepositorioVehiculoData implements RepositorioVehiculo {
 		this.repositorioCrud = repositorioCrud;
 	}
 
-	@Override
-	public Collection<Vehiculo> listar() {
-	// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	@Override
 	public void crear(Vehiculo vehiculo) {
@@ -35,10 +29,6 @@ public class RepositorioVehiculoData implements RepositorioVehiculo {
 
 	}
 
-	@Override
-	public boolean existe(String placa) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+
 
 }
