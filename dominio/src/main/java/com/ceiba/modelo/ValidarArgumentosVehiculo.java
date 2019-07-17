@@ -14,6 +14,12 @@ public class ValidarArgumentosVehiculo {
 		}
 	}
 	
+	public static void validarLongitudPlaca(String placa, int longitud, String mensaje) {
+		if (placa.length() != longitud) {
+			throw new ExcepcionLongitudPlaca(mensaje);
+		}
+	}
+	
 	public static void validarArgumentoTipoVehiculo(Object tipoVehiculo , String mensaje) {
 		if (tipoVehiculo == null ) {
 			throw new ExcepcionValoresObligatorios(mensaje);
@@ -40,9 +46,5 @@ public class ValidarArgumentosVehiculo {
 		}
 	}
 
-	public static void validarLongitudPlaca(String placa, int longitud, String mensaje) {
-		if (placa.length() != longitud) {
-			throw new ExcepcionLongitudPlaca(mensaje);
-		}
-	}
+
 }

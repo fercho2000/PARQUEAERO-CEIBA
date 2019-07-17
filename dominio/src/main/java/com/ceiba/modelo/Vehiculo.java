@@ -25,6 +25,7 @@ public class Vehiculo {
 		ValidarArgumentosVehiculo.validarArgumentoCilindraje(cilindraje, MENSAJE_CILINDRAJE_OBLIGATORIO);
 		ValidarArgumentosVehiculo.validarArgumentoMarca(marca, MENSAJE_MARCA_OBLIGATORIO);
 		ValidarArgumentosVehiculo.validarArgumentoModelo(modelo, MENSAJE_MODELO_OBLIGATORIO);
+		
 		this.placa = placa;
 		this.tipoVehiculo = tipoVehiculo;
 		this.cilindraje = cilindraje;

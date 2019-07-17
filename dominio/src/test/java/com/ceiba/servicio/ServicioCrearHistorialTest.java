@@ -25,24 +25,22 @@ public class ServicioCrearHistorialTest {
 	private static final String PROBAR_TIPO_VEHICULO = "noesUnVehiculo";
 	private static final DayOfWeek EL_DIA_DE_HOY = DayOfWeek.SUNDAY;
 
-	
-
 	@Test(expected = ExcepcionVehiculoParqueado.class)
 	public void valiarExistenciaDelVehiculoEnParqueadero() {
 
 		// Arrange
 		HistorialParqueo historialP = new HistorialParqueo();
 		Vehiculo vehiculo = new VehiculoTestBuilder().conPlaca(PLACA).build();
-	
 
 		historialP.setVehiculo(vehiculo);
 
 		RepositorioHistorialParqueo repositorioHistorialP = mock(RepositorioHistorialParqueo.class);
 		RepositorioVehiculo repositorioVehiculo = mock(RepositorioVehiculo.class);
-		
-		ServicioHistorialParqueo crearHistorial = new ServicioHistorialParqueo(repositorioHistorialP,repositorioVehiculo);
+
+		ServicioHistorialParqueo crearHistorial = new ServicioHistorialParqueo(repositorioHistorialP,
+				repositorioVehiculo);
 		// act
-		
+
 		historialP.setFechaSalida(null);
 
 		when(repositorioHistorialP.traerElHistorialParqueo(historialP.getVehiculo().getPlaca())).thenReturn(historialP);
@@ -57,48 +55,46 @@ public class ServicioCrearHistorialTest {
 		// Arrange
 
 		Vehiculo vehiculo = new VehiculoTestBuilder().conTipoVehiculo(TIPO_VEHICULO_ES_MOTO).build();
-		
 
 		RepositorioHistorialParqueo repositorioHistorialP = mock(RepositorioHistorialParqueo.class);
 		RepositorioVehiculo repositorioVehiculo = mock(RepositorioVehiculo.class);
-		ServicioHistorialParqueo crearHistorial = new ServicioHistorialParqueo(repositorioHistorialP,repositorioVehiculo);
+		ServicioHistorialParqueo crearHistorial = new ServicioHistorialParqueo(repositorioHistorialP,
+				repositorioVehiculo);
 		// act
 
-		when(repositorioHistorialP.cantidadVehiculos(vehiculo.getTipoVehiculo()))
-				.thenReturn(MAXIMO_CUPOS_MOTO);
+		when(repositorioHistorialP.cantidadVehiculos(vehiculo.getTipoVehiculo())).thenReturn(MAXIMO_CUPOS_MOTO);
 
 		// - assert
 		crearHistorial.ejecutar(vehiculo);
 	}
 
-	
 	@Test(expected = ExcepcionCantidadVehiculos.class)
 	public void valiarCuposDisponiblesParaAuto() {
 
 		// Arrange
 
 		Vehiculo vehiculo = new VehiculoTestBuilder().conTipoVehiculo(TIPO_VEHICULO_ES_AUTO).build();
-		
 
 		RepositorioHistorialParqueo repositorioHistorialP = mock(RepositorioHistorialParqueo.class);
 		RepositorioVehiculo repositorioVehiculo = mock(RepositorioVehiculo.class);
-		ServicioHistorialParqueo crearHistorial = new ServicioHistorialParqueo(repositorioHistorialP,repositorioVehiculo);
+		ServicioHistorialParqueo crearHistorial = new ServicioHistorialParqueo(repositorioHistorialP,
+				repositorioVehiculo);
 		// act
 
-		when(repositorioHistorialP.cantidadVehiculos(vehiculo.getTipoVehiculo()))
-				.thenReturn(MAXIMO_CUPOS_AUTO);
+		when(repositorioHistorialP.cantidadVehiculos(vehiculo.getTipoVehiculo())).thenReturn(MAXIMO_CUPOS_AUTO);
 
 		// - assert
 		crearHistorial.ejecutar(vehiculo);
 	}
-	
+
 	@Test(expected = ExcepcionRestriccionDia.class)
 	public void valiarPlacaDelAutoParaDiaHabil() {
 
 		RepositorioHistorialParqueo repositorioHistorialP = mock(RepositorioHistorialParqueo.class);
 		RepositorioVehiculo repositorioVehiculo = mock(RepositorioVehiculo.class);
-		ServicioHistorialParqueo crearHistorial = new ServicioHistorialParqueo(repositorioHistorialP,repositorioVehiculo);
-		
+		ServicioHistorialParqueo crearHistorial = new ServicioHistorialParqueo(repositorioHistorialP,
+				repositorioVehiculo);
+
 		Vehiculo vehiculo = new VehiculoTestBuilder().conPlaca(PLACA).build();
 		// -- assert
 		crearHistorial.validarPlacaParaDiasHabiles(vehiculo.getPlaca(), EL_DIA_DE_HOY);
@@ -109,8 +105,9 @@ public class ServicioCrearHistorialTest {
 
 		RepositorioHistorialParqueo repositorioHistorialP = mock(RepositorioHistorialParqueo.class);
 		RepositorioVehiculo repositorioVehiculo = mock(RepositorioVehiculo.class);
-		ServicioHistorialParqueo crearHistorial = new ServicioHistorialParqueo(repositorioHistorialP,repositorioVehiculo);
-		
+		ServicioHistorialParqueo crearHistorial = new ServicioHistorialParqueo(repositorioHistorialP,
+				repositorioVehiculo);
+
 		Vehiculo vehiculo = new VehiculoTestBuilder().conTipoVehiculo(PROBAR_TIPO_VEHICULO).build();
 		// -- assert
 		crearHistorial.devuelveTipoDeVehiculo(vehiculo.getTipoVehiculo());
