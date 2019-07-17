@@ -121,11 +121,11 @@ public class ServicioHistorialParqueaderoSalida {
 
 	public int obtenerHorasTrascurridas(LocalDateTime fechaIngreso, LocalDateTime fechaSalida) {
 		
-		double multiplicadorParaConvertirAsegundos = 0.001;
-		double segundos = (fechaSalida.atZone(ZoneId.of("America/Bogota")).toInstant().toEpochMilli()
-				- fechaIngreso.atZone(ZoneId.of("America/Bogota")).toInstant().toEpochMilli()) * multiplicadorParaConvertirAsegundos;
+		long divisorParaConvertirAsegundos = 1000;
+		long segundos = (fechaSalida.atZone(ZoneId.of("America/Bogota")).toInstant().toEpochMilli()
+				- fechaIngreso.atZone(ZoneId.of("America/Bogota")).toInstant().toEpochMilli()) / divisorParaConvertirAsegundos;
 		
-		System.out.println("Esto quea asi: "+fechaSalida.atZone(ZoneId.of("America/Bogota")).toInstant().toEpochMilli());
+		
 		int horas = (int) (segundos / 3600);
 		segundos = segundos % 3600;
 		int minutos = (int) (segundos / 60);
