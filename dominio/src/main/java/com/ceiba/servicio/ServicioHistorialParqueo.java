@@ -53,12 +53,6 @@ public class ServicioHistorialParqueo {
 
 	}
 
-//	public boolean consultarVehiculo(String placa) {
-//		return this.parqueoFachadaInterface.consultarVehiculo(placa);
-//	}
-
-	// me verifica si este vehiculo ya se encuentra parqueado
-
 	public void validarVehiculoParqueado(String placa) {
 
 		HistorialParqueo historial = this.repositorioHistorial.traerElHistorialParqueo(placa);
