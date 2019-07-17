@@ -3,8 +3,12 @@ package com.ceiba.modelo;
 public class Vehiculo {
 
 	private static final int LONGITUD_PLACAS = 6;
-	private static final String MENSAJE_SI_PLACAS_INCORRECTAS = "La placa que ingreso es incorrecta";
-	private static final String TODOS_LOS_DATOS_OBLIGATORIOS = "Todos los datos son obligatorio.";
+	private static final String MENSAJE_SI_PLACAS_INCORRECTAS = "La longitud de la placa que ingreso es incorrecta";
+	private static final String MENSAJE_PLACA_OBLIGATORIO = "La placa es obligatoria.";
+	private static final String MENSAJE_TIPO_VEHICULO_OBLIGATORIO = "El tipo de vehiculo es obligatoria.";
+	private static final String MENSAJE_CILINDRAJE_OBLIGATORIO = "El cilindraje es obligatorio.";
+	private static final String MENSAJE_MARCA_OBLIGATORIO = "La marca es obligatorio.";
+	private static final String MENSAJE_MODELO_OBLIGATORIO = "El modelo del vehiculo es obligatorio.";
 
 	private String placa;
 	private String tipoVehiculo;
@@ -13,11 +17,14 @@ public class Vehiculo {
 	private String modelo;
 
 	public Vehiculo(String placa, String tipoVehiculo, String cilindraje, String marca, String modelo) {
-		ValidarArgumentosVehiculo.validarObligatorios(placa, tipoVehiculo, cilindraje, marca, modelo,
-				TODOS_LOS_DATOS_OBLIGATORIOS);
 
+		ValidarArgumentosVehiculo.validarArgumentoPlaca(placa, MENSAJE_PLACA_OBLIGATORIO);
 		ValidarArgumentosVehiculo.validarLongitudPlaca(placa, LONGITUD_PLACAS, MENSAJE_SI_PLACAS_INCORRECTAS);
 
+		ValidarArgumentosVehiculo.validarArgumentoTipoVehiculo(tipoVehiculo, MENSAJE_TIPO_VEHICULO_OBLIGATORIO);
+		ValidarArgumentosVehiculo.validarArgumentoCilindraje(cilindraje, MENSAJE_CILINDRAJE_OBLIGATORIO);
+		ValidarArgumentosVehiculo.validarArgumentoMarca(marca, MENSAJE_MARCA_OBLIGATORIO);
+		ValidarArgumentosVehiculo.validarArgumentoModelo(modelo, MENSAJE_MODELO_OBLIGATORIO);
 		this.placa = placa;
 		this.tipoVehiculo = tipoVehiculo;
 		this.cilindraje = cilindraje;

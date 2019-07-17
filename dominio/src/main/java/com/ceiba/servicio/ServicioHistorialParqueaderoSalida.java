@@ -40,7 +40,6 @@ public class ServicioHistorialParqueaderoSalida {
 				historial.getVehiculo().getCilindraje());
 
 		historial.setPago(valorTotalAPagar);
-		System.out.println("El valor a pagar es : " + valorTotalAPagar);
 		historial.setFechaSalida(fechaSalida);
 
 		this.repositorioHistorial.actualizarHistorialAlRetirar(historial);
@@ -121,8 +120,12 @@ public class ServicioHistorialParqueaderoSalida {
 	}
 
 	public int obtenerHorasTrascurridas(LocalDateTime fechaIngreso, LocalDateTime fechaSalida) {
-		long segundos = (fechaSalida.atZone(ZoneId.of("America/Bogota")).toInstant().toEpochMilli()
-				- fechaIngreso.atZone(ZoneId.of("America/Bogota")).toInstant().toEpochMilli()) / 1000;
+		
+		double multiplicadorParaConvertirAsegundos = 0.001;
+		double segundos = (fechaSalida.atZone(ZoneId.of("America/Bogota")).toInstant().toEpochMilli()
+				- fechaIngreso.atZone(ZoneId.of("America/Bogota")).toInstant().toEpochMilli()) * multiplicadorParaConvertirAsegundos;
+		
+		System.out.println("Esto quea asi: "+fechaSalida.atZone(ZoneId.of("America/Bogota")).toInstant().toEpochMilli());
 		int horas = (int) (segundos / 3600);
 		segundos = segundos % 3600;
 		int minutos = (int) (segundos / 60);
