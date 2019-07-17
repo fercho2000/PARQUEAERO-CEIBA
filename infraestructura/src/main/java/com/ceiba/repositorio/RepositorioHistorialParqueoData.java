@@ -23,7 +23,7 @@ public class RepositorioHistorialParqueoData implements RepositorioHistorialParq
 	@Override
 	public void crear(HistorialParqueo historialParqueo) {
 
-	EntityHistorialParqueo parqueoEntity = this.repositorioParqueo
+		EntityHistorialParqueo parqueoEntity = this.repositorioParqueo
 				.findByVehiculoPlaca(historialParqueo.getVehiculo().getPlaca());
 		if (parqueoEntity == null) {
 			this.repositorioParqueo.save(BuilderHistorialParqueo.convertirAEntidad(historialParqueo));
@@ -93,8 +93,6 @@ public class RepositorioHistorialParqueoData implements RepositorioHistorialParq
 		int contadorVehiculos = 0;
 		Iterable<EntityHistorialParqueo> listaVehiculos = this.repositorioParqueo
 				.findByVehiculoTipovehiculo(tipoVehiculo);
-		
-		System.out.println("Esta lista vehiculos trae: " + listaVehiculos);
 		for (EntityHistorialParqueo vehiculo : listaVehiculos) {
 			if (vehiculo.getFechaSalida() == null) {
 				contadorVehiculos++;
