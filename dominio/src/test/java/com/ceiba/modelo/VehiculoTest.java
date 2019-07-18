@@ -17,7 +17,6 @@ public class VehiculoTest {
 	private static final String MARCA = "BOXER";
 	private static final String MODELO = "2011";
 
-	
 	@Test
 	public void validarArgumentoPlacaVaciaEnModeloVehiculo() {
 		// Arrange
@@ -31,7 +30,7 @@ public class VehiculoTest {
 		}
 
 	}
-	
+
 	@Test
 	public void validarLongitudPlacaEnModeloVehiculo() {
 		// Arrange
@@ -74,7 +73,7 @@ public class VehiculoTest {
 		}
 
 	}
-	
+
 	@Test
 	public void validarArgumentoMarcacioEnModeloVehiculo() {
 		// Arrange
@@ -87,7 +86,6 @@ public class VehiculoTest {
 			assertEquals(MENSAJE_MARCA_OBLIGATORIO, e.getMessage());
 		}
 	}
-	
 
 	@Test
 	public void validarArgumentoModeloEnModeloVehiculo() {
@@ -101,5 +99,5 @@ public class VehiculoTest {
 			assertEquals(MENSAJE_MODELO_OBLIGATORIO, e.getMessage());
 		}
 	}
-	
+
 }
