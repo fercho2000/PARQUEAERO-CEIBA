@@ -21,8 +21,6 @@ public class ServicioHistorialParqueaderoSalida {
 
 	private RepositorioHistorialParqueo repositorioHistorial;
 
-	public ServicioHistorialParqueaderoSalida() {
-	}
 
 	public ServicioHistorialParqueaderoSalida(RepositorioHistorialParqueo repositorioHistorial) {
 		this.repositorioHistorial = repositorioHistorial;

@@ -1,5 +1,6 @@
 package com.ceiba.servicio;
 
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -112,5 +113,35 @@ public class ServicioCrearHistorialTest {
 		// -- assert
 		crearHistorial.devuelveTipoDeVehiculo(vehiculo.getTipoVehiculo());
 	}
+	
+	@Test
+	public void validarSiEsMotoTest() {
+		//arrange
+		RepositorioHistorialParqueo repositorioHistorialP = mock(RepositorioHistorialParqueo.class);
+		RepositorioVehiculo repositorioVehiculo = mock(RepositorioVehiculo.class);
+		ServicioHistorialParqueo crearHistorial = new ServicioHistorialParqueo(repositorioHistorialP,
+				repositorioVehiculo);
+		//act
+		String tipoAutomovil= crearHistorial.devuelveTipoDeVehiculo(TIPO_VEHICULO_ES_MOTO);
+		
+		//assert
+		assertTrue(tipoAutomovil.equals("moto"));
+	}
+	
+	@Test
+	public void validarSiEsAutoTest() {
+		//arrange
+		RepositorioHistorialParqueo repositorioHistorialP = mock(RepositorioHistorialParqueo.class);
+		RepositorioVehiculo repositorioVehiculo = mock(RepositorioVehiculo.class);
+		ServicioHistorialParqueo crearHistorial = new ServicioHistorialParqueo(repositorioHistorialP,
+				repositorioVehiculo);
+		//act
+		String tipoAutomovil= crearHistorial.devuelveTipoDeVehiculo(TIPO_VEHICULO_ES_AUTO);
+		
+		//assert
+		assertTrue(tipoAutomovil.equals("auto"));
+	}
+	
+	
 
 }
