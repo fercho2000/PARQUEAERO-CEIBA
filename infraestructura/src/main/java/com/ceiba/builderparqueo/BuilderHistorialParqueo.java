@@ -5,10 +5,10 @@ import com.ceiba.modelo.HistorialParqueo;
 
 public class BuilderHistorialParqueo {
 
-private BuilderHistorialParqueo() {
-		
+	private BuilderHistorialParqueo() {
+
 	}
-	
+
 	public static HistorialParqueo convertirAModelo(EntityHistorialParqueo historialParqueoEntity) {
 
 		HistorialParqueo parqueo = null;
@@ -22,20 +22,19 @@ private BuilderHistorialParqueo() {
 		return parqueo;
 
 	}
-	
+
 	public static EntityHistorialParqueo convertirAEntidad(HistorialParqueo parqueo) {
 		EntityHistorialParqueo parqueoEntity = null;
-		
-		if(parqueo != null) {
+
+		if (parqueo != null) {
 			parqueoEntity = new EntityHistorialParqueo();
 			parqueoEntity.setVehiculo(BuilderVehiculo.convertirAEntidad(parqueo.getVehiculo()));
 			parqueoEntity.setFechaIngreso(parqueo.getFechaIngreso());
 			parqueoEntity.setFechaSalida(parqueo.getFechaSalida());
 			parqueoEntity.setPago(parqueo.getPago());
 		}
-		
+
 		return parqueoEntity;
 	}
 
-	
 }

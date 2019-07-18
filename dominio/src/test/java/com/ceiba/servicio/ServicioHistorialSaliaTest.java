@@ -125,6 +125,30 @@ public class ServicioHistorialSaliaTest {
 		// assert
 		assertEquals(valorPago, 6000, 0.001);
 	}
+	
+	
+	@Test
+	public void calcularValorPago3DiaMotoConCilindrajeAltoTest() {
+		// arrange
+		LocalDateTime fechaIngreso = LocalDateTime.now();
+		LocalDateTime fechaSalida = LocalDateTime.now().plusDays(3);
+
+		Vehiculo vehiculo = new VehiculoTestBuilder().build();
+		vehiculo.setPlaca(PLACA);
+		vehiculo.setTipoVehiculo(TIPO_VEHICULO_ES_MOTO);
+		vehiculo.setCilindraje(CILINDRAJE_ALTO);
+
+		RepositorioHistorialParqueo repositorioHistorialP = mock(RepositorioHistorialParqueo.class);
+		ServicioHistorialParqueaderoSalida salidaParqueadero = new ServicioHistorialParqueaderoSalida(
+				repositorioHistorialP);
+
+		// act
+		float valorPago = salidaParqueadero.calcularPagoParqueo(fechaIngreso, fechaSalida, vehiculo.getPlaca(),
+				vehiculo.getTipoVehiculo(), vehiculo.getCilindraje());
+
+		// assert
+		assertEquals(valorPago,14000, 0.001);
+	}
 
 	@Test
 	public void calcularValorPago1DiaAutoTest() {
@@ -147,6 +171,53 @@ public class ServicioHistorialSaliaTest {
 
 		// assert
 		assertEquals(valorPago, 8000, 0.001);
+	}
+	
+	
+	@Test
+	public void calcularValorPago1DiaCon2horasAutoTest() {
+		// arrange
+
+		LocalDateTime fechaIngreso = LocalDateTime.now();
+		LocalDateTime fechaSalida = LocalDateTime.now().plusDays(1).plusHours(2);
+		Vehiculo vehiculo = new VehiculoTestBuilder().build();
+
+		vehiculo.setPlaca(PLACA_AUTO);
+		vehiculo.setTipoVehiculo(TIPO_VEHICULO_ES_AUTO);
+		vehiculo.setCilindraje(CILINDRAJE_ALTO);
+
+		RepositorioHistorialParqueo repositorioHistorialP = mock(RepositorioHistorialParqueo.class);
+		ServicioHistorialParqueaderoSalida salidaParqueadero = new ServicioHistorialParqueaderoSalida(
+				repositorioHistorialP);
+		// act
+		float valorPago = salidaParqueadero.calcularPagoParqueo(fechaIngreso, fechaSalida, vehiculo.getPlaca(),
+				vehiculo.getTipoVehiculo(), vehiculo.getCilindraje());
+
+		// assert
+		assertEquals(valorPago, 10000, 0.001);
+	}
+	
+	@Test
+	public void calcularValorPago2DiasAutoTest() {
+		// arrange
+
+		LocalDateTime fechaIngreso = LocalDateTime.now();
+		LocalDateTime fechaSalida = LocalDateTime.now().plusDays(2);
+		Vehiculo vehiculo = new VehiculoTestBuilder().build();
+
+		vehiculo.setPlaca(PLACA_AUTO);
+		vehiculo.setTipoVehiculo(TIPO_VEHICULO_ES_AUTO);
+		vehiculo.setCilindraje(CILINDRAJE_ALTO);
+
+		RepositorioHistorialParqueo repositorioHistorialP = mock(RepositorioHistorialParqueo.class);
+		ServicioHistorialParqueaderoSalida salidaParqueadero = new ServicioHistorialParqueaderoSalida(
+				repositorioHistorialP);
+		// act
+		float valorPago = salidaParqueadero.calcularPagoParqueo(fechaIngreso, fechaSalida, vehiculo.getPlaca(),
+				vehiculo.getTipoVehiculo(), vehiculo.getCilindraje());
+
+		// assert
+		assertEquals(valorPago, 16000, 0.001);
 	}
 
 }
