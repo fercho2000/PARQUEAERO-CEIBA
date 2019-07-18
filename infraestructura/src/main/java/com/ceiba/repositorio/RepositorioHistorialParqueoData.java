@@ -3,8 +3,7 @@ package com.ceiba.repositorio;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Repository;
-
-import com.ceiba.builderparqueo.BuilderHistorialParqueo;
+import com.ceiba.builderparqueo.MaperHistorialParqueo;
 import com.ceiba.crudrepository.CrudHistorialParqueoRepository;
 import com.ceiba.entity.EntityHistorialParqueo;
 import com.ceiba.modelo.HistorialParqueo;
@@ -27,10 +26,10 @@ public class RepositorioHistorialParqueoData implements RepositorioHistorialParq
 		EntityHistorialParqueo parqueoEntity = this.repositorioParqueo
 				.findByVehiculoPlaca(historialParqueo.getVehiculo().getPlaca());
 		if (parqueoEntity == null) {
-			this.repositorioParqueo.save(BuilderHistorialParqueo.convertirAEntidad(historialParqueo));
+			this.repositorioParqueo.save(MaperHistorialParqueo.convertirAEntidad(historialParqueo));
 		} else {
 			this.repositorioParqueo.delete(parqueoEntity);
-			this.repositorioParqueo.save(BuilderHistorialParqueo.convertirAEntidad(historialParqueo));
+			this.repositorioParqueo.save(MaperHistorialParqueo.convertirAEntidad(historialParqueo));
 		}
 	}
 
@@ -52,7 +51,7 @@ public class RepositorioHistorialParqueoData implements RepositorioHistorialParq
 	@Override
 	public HistorialParqueo traerElHistorialParqueo(String placa) {
 		EntityHistorialParqueo parqueoEntity = repositorioParqueo.findByVehiculoPlaca(placa);
-		return BuilderHistorialParqueo.convertirAModelo(parqueoEntity);
+		return MaperHistorialParqueo.convertirAModelo(parqueoEntity);
 	}
 
 	@Override
@@ -73,7 +72,7 @@ public class RepositorioHistorialParqueoData implements RepositorioHistorialParq
 		boolean vehiculoSalio = false;
 		EntityHistorialParqueo parqueoEntity = this.repositorioParqueo.findByVehiculoPlaca(placa);
 
-		if (BuilderHistorialParqueo.convertirAModelo(parqueoEntity).getFechaSalida() != null) {
+		if (MaperHistorialParqueo.convertirAModelo(parqueoEntity).getFechaSalida() != null) {
 			vehiculoSalio = true;
 		}
 
@@ -115,7 +114,7 @@ public class RepositorioHistorialParqueoData implements RepositorioHistorialParq
 		Iterable<EntityHistorialParqueo> listaParqueosEntities = this.repositorioParqueo.findAll();
 
 		for (EntityHistorialParqueo parqueoEntity : listaParqueosEntities) {
-			listaParqueo.add(BuilderHistorialParqueo.convertirAModelo(parqueoEntity));
+			listaParqueo.add(MaperHistorialParqueo.convertirAModelo(parqueoEntity));
 		}
 
 		return listaParqueo;

@@ -3,9 +3,9 @@ package com.ceiba.builderparqueo;
 import com.ceiba.entity.EntityVehiculo;
 import com.ceiba.modelo.Vehiculo;
 
-public class BuilderVehiculo {
+public class MaperVehiculo {
 
-	private BuilderVehiculo() {
+	private MaperVehiculo() {
 
 	}
 

@@ -4,14 +4,27 @@ import java.time.LocalDateTime;
 
 public class RespuestaAlRetirarVehiculo {
 
+	private static final String MENSAJE_NO_HAY_PLACA = "No se encontro la placa";
+	private static final String MENSAJE_NO_HAY_TIPO_VEHICULO = "No se encontro el tipo de vehiculo";
+	private static final String MENSAJE_NO_HAY_FECHA_INGRESO = "No no hay fecha ingreso";
+	private static final String MENSAJE_NO_HAY_FECHA_SALIDA = "No no hay fecha salida";
+	private static final String MENSAJE_NO_GENERO_VALOR_PAGO = "Valor no encontrado";
 	private String tipoVehiculo;
 	private String placa;
 	private LocalDateTime fechaIngreso;
 	private LocalDateTime fechaSalida;
 	private float pago;
-	
+
 	public RespuestaAlRetirarVehiculo(String tipoVehiculo, String placa, LocalDateTime fechaIngreso,
 			LocalDateTime fechaSalida, float pago) {
+		ValidarArgumentosRespuestaRetirarVehiculo.validarArgumentoPlaca(placa, MENSAJE_NO_HAY_PLACA);
+		ValidarArgumentosRespuestaRetirarVehiculo.validarArgumentoTipoVehiculo(tipoVehiculo,
+				MENSAJE_NO_HAY_TIPO_VEHICULO);
+		ValidarArgumentosRespuestaRetirarVehiculo.validarArgumentoFechaIngreso(fechaIngreso,
+				MENSAJE_NO_HAY_FECHA_INGRESO);
+		ValidarArgumentosRespuestaRetirarVehiculo.validarArgumentoFechaSalida(fechaSalida, MENSAJE_NO_HAY_FECHA_SALIDA);
+		ValidarArgumentosRespuestaRetirarVehiculo.validarArgumentoPago(pago, MENSAJE_NO_GENERO_VALOR_PAGO);
+
 		this.tipoVehiculo = tipoVehiculo;
 		this.placa = placa;
 		this.fechaIngreso = fechaIngreso;
@@ -58,8 +71,5 @@ public class RespuestaAlRetirarVehiculo {
 	public void setPago(float pago) {
 		this.pago = pago;
 	}
-	
-	
-	
-	
+
 }
