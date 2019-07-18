@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import com.ceiba.modelo.HistorialParqueo;
+import com.ceiba.modelo.RespuestaAlRetirarVehiculo;
 import com.ceiba.servicio.ServicioHistorialParqueaderoSalida;
 
 @Component
@@ -29,8 +30,9 @@ public class ManejadorSalidaVehiculosHistorial {
 	}
 	
 	
-	public void retirarParqueo(HistorialParqueo historialPraqueo) {
-		this.servicioSalidaHistorial.ejecutarRetirarParqueo(historialPraqueo);
+	public RespuestaAlRetirarVehiculo retirarParqueo(HistorialParqueo historialPraqueo) {
+		
+	return	this.servicioSalidaHistorial.ejecutarRetirarParqueo(historialPraqueo);
 	}
 	
 	public List<HistorialParqueo> listaDeVehiculosParqueados() {

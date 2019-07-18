@@ -3,6 +3,7 @@ package com.ceiba.puerto.repositorio;
 import java.util.List;
 
 import com.ceiba.modelo.HistorialParqueo;
+import com.ceiba.modelo.RespuestaAlRetirarVehiculo;
 import com.ceiba.modelo.Vehiculo;
 
 public interface RepositorioHistorialParqueo {
@@ -10,7 +11,7 @@ public interface RepositorioHistorialParqueo {
 	void crear(HistorialParqueo historialParqueo);
 	
 	
-	public void actualizarHistorialAlRetirar(HistorialParqueo historial);
+	public RespuestaAlRetirarVehiculo actualizarHistorialAlRetirar(HistorialParqueo historial);
 	
 	
 	public HistorialParqueo  traerElHistorialParqueo(String placa);

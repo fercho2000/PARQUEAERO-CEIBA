@@ -15,6 +15,7 @@ import com.ceiba.comando.manejador.ManejadorCrearHistorial;
 import com.ceiba.comando.manejador.ManejadorSalidaVehiculosHistorial;
 import com.ceiba.excepcion.ExcepcionVehiculoParqueado;
 import com.ceiba.modelo.HistorialParqueo;
+import com.ceiba.modelo.RespuestaAlRetirarVehiculo;
 
 @RestController
 public class ControladorHistorialParqueo {
@@ -44,7 +45,7 @@ public class ControladorHistorialParqueo {
 	}
 
 	@PutMapping("/retirar/{placa}")
-	public void sacarVehiculo(@PathVariable String placa) {
+	public RespuestaAlRetirarVehiculo  sacarVehiculo(@PathVariable String placa) {
 
 		if (!this.manejadorSalidas.consultarVehiculo(placa)) {
 			throw new ExcepcionVehiculoParqueado("El vehiculo no esta parqueao");
@@ -59,6 +60,6 @@ public class ControladorHistorialParqueo {
 		historialParqueo = this.manejadorSalidas.obtenerParqueo(placa);
 
 //							
-		this.manejadorSalidas.retirarParqueo(historialParqueo);
+		return this.manejadorSalidas.retirarParqueo(historialParqueo);
 	}
 }

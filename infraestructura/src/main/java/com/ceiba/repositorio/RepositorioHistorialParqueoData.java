@@ -8,6 +8,7 @@ import com.ceiba.builderparqueo.BuilderHistorialParqueo;
 import com.ceiba.crudrepository.CrudHistorialParqueoRepository;
 import com.ceiba.entity.EntityHistorialParqueo;
 import com.ceiba.modelo.HistorialParqueo;
+import com.ceiba.modelo.RespuestaAlRetirarVehiculo;
 import com.ceiba.modelo.Vehiculo;
 import com.ceiba.puerto.repositorio.RepositorioHistorialParqueo;
 
@@ -34,12 +35,18 @@ public class RepositorioHistorialParqueoData implements RepositorioHistorialParq
 	}
 
 	@Override
-	public void actualizarHistorialAlRetirar(HistorialParqueo historialParqueo) {
+	public RespuestaAlRetirarVehiculo actualizarHistorialAlRetirar(HistorialParqueo historialParqueo) {
 		EntityHistorialParqueo parqueoEntity = this.repositorioParqueo
 				.findByVehiculoPlaca(historialParqueo.getVehiculo().getPlaca());
 		parqueoEntity.setFechaSalida(historialParqueo.getFechaSalida());
 		parqueoEntity.setPago(historialParqueo.getPago());
 		this.repositorioParqueo.save(parqueoEntity);
+
+		RespuestaAlRetirarVehiculo respuestaSalidaVehiculo = new RespuestaAlRetirarVehiculo(
+				historialParqueo.getVehiculo().getTipoVehiculo(), historialParqueo.getVehiculo().getPlaca(),
+				historialParqueo.getFechaIngreso(), historialParqueo.getFechaSalida(), historialParqueo.getPago());
+
+		return respuestaSalidaVehiculo;
 	}
 
 	@Override

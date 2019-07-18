@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.List;
 import com.ceiba.modelo.HistorialParqueo;
+import com.ceiba.modelo.RespuestaAlRetirarVehiculo;
 import com.ceiba.puerto.repositorio.RepositorioHistorialParqueo;
 
 public class ServicioHistorialParqueaderoSalida {
@@ -25,7 +26,7 @@ public class ServicioHistorialParqueaderoSalida {
 		this.repositorioHistorial = repositorioHistorial;
 	}
 
-	public void ejecutarRetirarParqueo(HistorialParqueo historial) {
+	public RespuestaAlRetirarVehiculo ejecutarRetirarParqueo(HistorialParqueo historial) {
 
 		float valorTotalAPagar = 0;
 		LocalDateTime fechaSalida = historial.getFechaSalida();
@@ -39,7 +40,7 @@ public class ServicioHistorialParqueaderoSalida {
 		historial.setPago(valorTotalAPagar);
 		historial.setFechaSalida(fechaSalida);
 
-		this.repositorioHistorial.actualizarHistorialAlRetirar(historial);
+	return	this.repositorioHistorial.actualizarHistorialAlRetirar(historial);
 	}
 
 	public HistorialParqueo obtenerHistorialParqueo(String placa) {
