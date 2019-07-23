@@ -3,7 +3,7 @@ package com.ceiba.modelo;
 import com.ceiba.excepcion.ExcepcionLongitudPlaca;
 import com.ceiba.excepcion.ExcepcionValoresObligatorios;
 
-public class ValidarArgumentosVehiculo {
+public final class ValidarArgumentosVehiculo {
 	
 	private ValidarArgumentosVehiculo() {
 		

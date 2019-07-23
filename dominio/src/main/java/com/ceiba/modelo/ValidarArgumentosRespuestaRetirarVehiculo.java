@@ -2,7 +2,7 @@ package com.ceiba.modelo;
 
 import com.ceiba.excepcion.ExcepcionArgumentosEsperadosEnSalida;
 
-public class ValidarArgumentosRespuestaRetirarVehiculo {
+public final class ValidarArgumentosRespuestaRetirarVehiculo {
 	
 	private ValidarArgumentosRespuestaRetirarVehiculo(){}
 
