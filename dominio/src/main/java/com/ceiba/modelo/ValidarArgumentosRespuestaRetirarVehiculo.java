@@ -3,6 +3,8 @@ package com.ceiba.modelo;
 import com.ceiba.excepcion.ExcepcionArgumentosEsperadosEnSalida;
 
 public class ValidarArgumentosRespuestaRetirarVehiculo {
+	
+	private ValidarArgumentosRespuestaRetirarVehiculo(){}
 
 	public static void validarArgumentoPlaca(Object placa , String mensaje) {
 		if (placa == null ) {

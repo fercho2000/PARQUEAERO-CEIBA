@@ -1,6 +1,5 @@
 package com.ceiba.modelo;
 
-// TODO: arreglar con un ENUM
 public interface TipoVehiculo {
 	static final String MOTO = "moto";
 	static final String AUTO = "auto";

@@ -4,6 +4,10 @@ import com.ceiba.excepcion.ExcepcionLongitudPlaca;
 import com.ceiba.excepcion.ExcepcionValoresObligatorios;
 
 public class ValidarArgumentosVehiculo {
+	
+	private ValidarArgumentosVehiculo() {
+		
+	}
 
 	public static void validarArgumentoPlaca(Object placa , String mensaje) {
 		if (placa == null ) {

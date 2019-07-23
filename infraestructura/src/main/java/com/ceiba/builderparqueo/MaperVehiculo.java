@@ -3,7 +3,7 @@ package com.ceiba.builderparqueo;
 import com.ceiba.entity.EntityVehiculo;
 import com.ceiba.modelo.Vehiculo;
 
-public class MaperVehiculo {
+public final class MaperVehiculo {
 
 	private MaperVehiculo() {
 

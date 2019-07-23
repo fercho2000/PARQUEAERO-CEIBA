@@ -3,7 +3,7 @@ package com.ceiba.builderparqueo;
 import com.ceiba.entity.EntityHistorialParqueo;
 import com.ceiba.modelo.HistorialParqueo;
 
-public class MaperHistorialParqueo {
+public final class MaperHistorialParqueo {
 
 	private MaperHistorialParqueo() {
 

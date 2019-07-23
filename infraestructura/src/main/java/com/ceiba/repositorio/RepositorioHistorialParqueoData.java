@@ -41,11 +41,9 @@ public class RepositorioHistorialParqueoData implements RepositorioHistorialParq
 		parqueoEntity.setPago(historialParqueo.getPago());
 		this.repositorioParqueo.save(parqueoEntity);
 
-		RespuestaAlRetirarVehiculo respuestaSalidaVehiculo = new RespuestaAlRetirarVehiculo(
+		return new RespuestaAlRetirarVehiculo(
 				historialParqueo.getVehiculo().getTipoVehiculo(), historialParqueo.getVehiculo().getPlaca(),
 				historialParqueo.getFechaIngreso(), historialParqueo.getFechaSalida(), historialParqueo.getPago());
-
-		return respuestaSalidaVehiculo;
 	}
 
 	@Override
