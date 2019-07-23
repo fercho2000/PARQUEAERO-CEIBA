@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import java.time.LocalDateTime;
 import org.junit.Test;
+
 import com.ceiba.modelo.Vehiculo;
 import com.ceiba.puerto.repositorio.RepositorioHistorialParqueo;
 import com.ceiba.testdatabuilder.VehiculoTestBuilder;
@@ -16,69 +17,6 @@ public class ServicioHistorialSaliaTest {
 	private static final String TIPO_VEHICULO_ES_AUTO = "auto";
 	private static final String CILINDRAJE_BAJO = "220";
 	private static final String CILINDRAJE_ALTO = "520";
-
-	@Test
-	public void obtenerHorasTranscurridas48HorasTest() {
-		// arrange
-		LocalDateTime fechaIngreso = LocalDateTime.now();
-		LocalDateTime fechaSalida = LocalDateTime.now().plusDays(2);
-		RepositorioHistorialParqueo repositorioHistorialP = mock(RepositorioHistorialParqueo.class);
-		ServicioHistorialParqueaderoSalida salidaParqueadero = new ServicioHistorialParqueaderoSalida(
-				repositorioHistorialP);
-		// act
-		int cantidadHoras = salidaParqueadero.obtenerHorasTrascurridas(fechaIngreso, fechaSalida);
-
-		// assert
-		assertEquals(cantidadHoras, 48);
-	}
-
-	@Test
-	public void obtenerHorasTranscurridas30SegundosTest() {
-		// arranges
-		LocalDateTime fechaIngreso = LocalDateTime.now();
-		LocalDateTime fechaSalida = LocalDateTime.now().plusSeconds(30);
-		RepositorioHistorialParqueo repositorioHistorialP = mock(RepositorioHistorialParqueo.class);
-		ServicioHistorialParqueaderoSalida salidaParqueadero = new ServicioHistorialParqueaderoSalida(
-				repositorioHistorialP);
-		// act
-		int cantidadHoras = salidaParqueadero.obtenerHorasTrascurridas(fechaIngreso, fechaSalida);
-
-		// assert
-		assertEquals(cantidadHoras, 1);
-	}
-
-	@Test
-	public void obtenerHorasTranscurridas8HorasCon35minTest() {
-		// arrange
-		LocalDateTime fechaIngreso = LocalDateTime.now();
-		LocalDateTime fechaSalida = LocalDateTime.now().plusHours(8).plusMinutes(35);
-
-		RepositorioHistorialParqueo repositorioHistorialP = mock(RepositorioHistorialParqueo.class);
-		ServicioHistorialParqueaderoSalida salidaParqueadero = new ServicioHistorialParqueaderoSalida(
-				repositorioHistorialP);
-		// act
-		int cantidadHoras = salidaParqueadero.obtenerHorasTrascurridas(fechaIngreso, fechaSalida);
-
-		// assert
-		assertEquals(cantidadHoras, 9);
-	}
-
-	@Test
-	public void obtenerHorasTranscurridas0SegundosTest() {
-
-		// arrange
-		LocalDateTime fechaIngreso = LocalDateTime.now();
-		LocalDateTime fechaSalida = LocalDateTime.now();
-
-		RepositorioHistorialParqueo repositorioHistorialP = mock(RepositorioHistorialParqueo.class);
-		ServicioHistorialParqueaderoSalida salidaParqueadero = new ServicioHistorialParqueaderoSalida(
-				repositorioHistorialP);
-		// act
-		int cantidadHoras = salidaParqueadero.obtenerHorasTrascurridas(fechaIngreso, fechaSalida);
-
-		// assert
-		assertEquals(cantidadHoras, 0);
-	}
 
 	@Test
 	public void calcularValorPago1DiaMotoConCilindrajeBajoTest() {
@@ -220,4 +158,8 @@ public class ServicioHistorialSaliaTest {
 		assertEquals(valorPago, 16000, 0.001);
 	}
 
+	
+	
+	
+	
 }
