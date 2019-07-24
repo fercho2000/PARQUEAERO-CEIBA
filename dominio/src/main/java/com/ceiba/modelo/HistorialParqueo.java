@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public class HistorialParqueo {
 
-	private int id;
+
 	private LocalDateTime fechaIngreso;
 	private LocalDateTime fechaSalida;
 	private float pago;
