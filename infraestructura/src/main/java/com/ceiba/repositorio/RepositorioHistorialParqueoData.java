@@ -69,7 +69,15 @@ public class RepositorioHistorialParqueoData implements RepositorioHistorialParq
 
 	@Override
 	public int cantidadVehiculos(String tipoVehiculo) {
-		return repositorioParqueo.countByVehiculoTipovehiculo(tipoVehiculo);
+		int contadorVehiculos = 0;
+		Iterable<EntityHistorialParqueo> listaVehiculos = this.repositorioParqueo
+				.findByVehiculoTipovehiculo(tipoVehiculo);
+		for (EntityHistorialParqueo vehiculo : listaVehiculos) {
+			if (vehiculo.getFechaSalida() == null) {
+				contadorVehiculos++;
+			}
+		}
+		return contadorVehiculos;
 	}
 
 	@Override

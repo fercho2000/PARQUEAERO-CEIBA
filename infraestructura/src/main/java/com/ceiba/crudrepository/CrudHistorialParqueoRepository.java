@@ -13,8 +13,6 @@ public interface CrudHistorialParqueoRepository extends CrudRepository<EntityHis
 	public Iterable<EntityHistorialParqueo> findByFechaSalidaNotNull();
 
 	public Iterable<EntityHistorialParqueo> findByVehiculoTipovehiculo(String tipo);
-
-	public int countByVehiculoTipovehiculo(String tipo);
 	
 	public Iterable<EntityHistorialParqueo> findAll();
 
