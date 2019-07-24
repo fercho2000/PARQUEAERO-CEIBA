@@ -1,5 +1,8 @@
 package com.ceiba.builderparqueo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.ceiba.entity.EntityHistorialParqueo;
 import com.ceiba.modelo.HistorialParqueo;
 
@@ -22,6 +25,14 @@ public final class MaperHistorialParqueo {
 		return parqueo;
 
 	}
+	
+	public static List<HistorialParqueo> convertirAModelo(Iterable<EntityHistorialParqueo> listaParqueosEntities) {
+		List<HistorialParqueo> listaParqueo = new ArrayList<>();
+		for (EntityHistorialParqueo parqueoEntity : listaParqueosEntities) {
+			listaParqueo.add(convertirAModelo(parqueoEntity));
+		}
+		return listaParqueo;
+	}
 
 	public static EntityHistorialParqueo convertirAEntidad(HistorialParqueo parqueo) {
 		EntityHistorialParqueo parqueoEntity = null;
@@ -36,5 +47,7 @@ public final class MaperHistorialParqueo {
 
 		return parqueoEntity;
 	}
+
+	
 
 }

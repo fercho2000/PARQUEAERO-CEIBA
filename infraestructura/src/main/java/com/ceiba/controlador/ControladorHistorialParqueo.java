@@ -27,27 +27,22 @@ public class ControladorHistorialParqueo {
 	@Autowired
 	public ControladorHistorialParqueo(ManejadorCrearHistorial manejadorCrearHistorialVehiculo,
 			ManejadorSalidaVehiculosHistorial manejadorSalidas) {
-
 		this.manejadorCrearHistorialVehiculo = manejadorCrearHistorialVehiculo;
 		this.manejadorSalidas = manejadorSalidas;
 	}
 
 	@PostMapping("/registrarHistorial")
 	public void crearHistorialParqueadero(@RequestBody ComandoVehiculo comandoVehiculo) {
-
 		this.manejadorCrearHistorialVehiculo.ejecutar(comandoVehiculo);
 	}
 
 	@GetMapping("/obtenervehiculos")
 	public List<HistorialParqueo> consultarVehiculosParqueados() {
-
 		return this.manejadorSalidas.listaDeVehiculosParqueados();
-
 	}
 
 	@PutMapping("/retirar/{placa}")
 	public RespuestaAlRetirarVehiculo sacarVehiculo(@PathVariable String placa) {
-
 		HistorialParqueo historialParqueo;
 		historialParqueo = this.manejadorSalidas.obtenerParqueo(placa);
 		return this.manejadorSalidas.retirarParqueo(historialParqueo);

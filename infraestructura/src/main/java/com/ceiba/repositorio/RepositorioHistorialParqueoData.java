@@ -1,6 +1,5 @@
 package com.ceiba.repositorio;
 
-import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Repository;
 import com.ceiba.builderparqueo.MaperHistorialParqueo;
@@ -54,72 +53,29 @@ public class RepositorioHistorialParqueoData implements RepositorioHistorialParq
 
 	@Override
 	public boolean existeParqueovehiculo(String placa) {
-
-		boolean vehiculoExiste = false;
-
-		if (this.repositorioParqueo.findByVehiculoPlaca(placa) != null) {
-			vehiculoExiste = true;
-		}
-
-		return vehiculoExiste;
-
+		return this.repositorioParqueo.findByVehiculoPlaca(placa) != null;
 	}
 
 	@Override
 	public boolean consultarSalidaVehiculo(String placa) {
-		boolean vehiculoSalio = false;
 		EntityHistorialParqueo parqueoEntity = this.repositorioParqueo.findByVehiculoPlaca(placa);
-
-		if (MaperHistorialParqueo.convertirAModelo(parqueoEntity).getFechaSalida() != null) {
-			vehiculoSalio = true;
-		}
-
-		return vehiculoSalio;
+		return parqueoEntity.getFechaSalida() != null;
 	}
 
 	@Override
 	public boolean existe(Vehiculo vehiculo) {
-		boolean elVehiculoExiste = true;
-
-		if (this.repositorioParqueo.findByVehiculoPlaca(vehiculo.getPlaca()) != null) {
-
-			elVehiculoExiste = true;
-		} else {
-			elVehiculoExiste = false;
-		}
-
-		return elVehiculoExiste;
-
+		return this.repositorioParqueo.findByVehiculoPlaca(vehiculo.getPlaca()) != null;
 	}
 
 	@Override
 	public int cantidadVehiculos(String tipoVehiculo) {
-		int contadorVehiculos = 0;
-		Iterable<EntityHistorialParqueo> listaVehiculos = this.repositorioParqueo
-				.findByVehiculoTipovehiculo(tipoVehiculo);
-		for (EntityHistorialParqueo vehiculo : listaVehiculos) {
-			if (vehiculo.getFechaSalida() == null) {
-
-				contadorVehiculos++;
-				if (contadorVehiculos == 1) {
-					contadorVehiculos = 2;
-				}
-			}
-		}
-		return contadorVehiculos;
+		return repositorioParqueo.countByVehiculoTipovehiculo(tipoVehiculo);
 	}
 
 	@Override
 	public List<HistorialParqueo> consultarVehiculosParqueados() {
-
-		List<HistorialParqueo> listaParqueo = new ArrayList<>();
 		Iterable<EntityHistorialParqueo> listaParqueosEntities = this.repositorioParqueo.findAll();
-
-		for (EntityHistorialParqueo parqueoEntity : listaParqueosEntities) {
-			listaParqueo.add(MaperHistorialParqueo.convertirAModelo(parqueoEntity));
-		}
-
-		return listaParqueo;
+		return MaperHistorialParqueo.convertirAModelo(listaParqueosEntities);
 	}
 
 }

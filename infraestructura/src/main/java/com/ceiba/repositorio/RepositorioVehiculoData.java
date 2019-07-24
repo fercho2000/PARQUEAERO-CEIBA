@@ -14,7 +14,7 @@ public class RepositorioVehiculoData implements RepositorioVehiculo {
 	CrudRepository<EntityVehiculo, String> repositorioCrud;
 
 	public RepositorioVehiculoData(CrudRepository<EntityVehiculo, String> repositorioCrud) {
-		super();
+		
 		this.repositorioCrud = repositorioCrud;
 	}
 

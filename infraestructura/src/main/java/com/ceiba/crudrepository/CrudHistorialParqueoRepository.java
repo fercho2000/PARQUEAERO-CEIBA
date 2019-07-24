@@ -14,6 +14,8 @@ public interface CrudHistorialParqueoRepository extends CrudRepository<EntityHis
 
 	public Iterable<EntityHistorialParqueo> findByVehiculoTipovehiculo(String tipo);
 
+	public int countByVehiculoTipovehiculo(String tipo);
+	
 	public Iterable<EntityHistorialParqueo> findAll();
 
 	public void deleteById(Long id);
