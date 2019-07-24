@@ -41,9 +41,9 @@ public class RepositorioHistorialParqueoData implements RepositorioHistorialParq
 		parqueoEntity.setPago(historialParqueo.getPago());
 		this.repositorioParqueo.save(parqueoEntity);
 
-		return new RespuestaAlRetirarVehiculo(
-				historialParqueo.getVehiculo().getTipoVehiculo(), historialParqueo.getVehiculo().getPlaca(),
-				historialParqueo.getFechaIngreso(), historialParqueo.getFechaSalida(), historialParqueo.getPago());
+		return new RespuestaAlRetirarVehiculo(historialParqueo.getVehiculo().getTipoVehiculo(),
+				historialParqueo.getVehiculo().getPlaca(), historialParqueo.getFechaIngreso(),
+				historialParqueo.getFechaSalida(), historialParqueo.getPago());
 	}
 
 	@Override
@@ -99,7 +99,11 @@ public class RepositorioHistorialParqueoData implements RepositorioHistorialParq
 				.findByVehiculoTipovehiculo(tipoVehiculo);
 		for (EntityHistorialParqueo vehiculo : listaVehiculos) {
 			if (vehiculo.getFechaSalida() == null) {
+
 				contadorVehiculos++;
+				if (contadorVehiculos == 1) {
+					contadorVehiculos = 2;
+				}
 			}
 		}
 		return contadorVehiculos;

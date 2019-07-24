@@ -21,8 +21,8 @@ public class ServicioCrearHistorialTest {
 	private static final String PLACA = "afr32b";
 	private static final String TIPO_VEHICULO_ES_MOTO = "moto";
 	private static final String TIPO_VEHICULO_ES_AUTO = "auto";
-	private static final int MAXIMO_CUPOS_MOTO = 11;
-	private static final int MAXIMO_CUPOS_AUTO = 21;
+	private static final int MAXIMO_CUPOS_MOTO = 10;
+	private static final int MAXIMO_CUPOS_AUTO = 20;
 	private static final String PROBAR_TIPO_VEHICULO = "noesUnVehiculo";
 	private static final DayOfWeek EL_DIA_LUNES = DayOfWeek.MONDAY;
 	private static final DayOfWeek EL_DIA_DOMINGO = DayOfWeek.SUNDAY;
