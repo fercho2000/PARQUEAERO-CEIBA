@@ -17,6 +17,7 @@ public class RespuestaAlRetirarVehiculo {
 
 	public RespuestaAlRetirarVehiculo(String tipoVehiculo, String placa, LocalDateTime fechaIngreso,
 			LocalDateTime fechaSalida, float pago) {
+		
 		ValidarArgumentosRespuestaRetirarVehiculo.validarArgumentoPlaca(placa, MENSAJE_NO_HAY_PLACA);
 		ValidarArgumentosRespuestaRetirarVehiculo.validarArgumentoTipoVehiculo(tipoVehiculo,
 				MENSAJE_NO_HAY_TIPO_VEHICULO);

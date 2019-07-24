@@ -33,7 +33,7 @@ public final class ValidarArgumentosRespuestaRetirarVehiculo {
 	}
 	
 	public static void validarArgumentoPago(Object pago , String mensaje) {
-		if (pago == null ) {
+	if (pago == null ) {
 			throw new ExcepcionArgumentosEsperadosEnSalida(mensaje);
 		}
 		

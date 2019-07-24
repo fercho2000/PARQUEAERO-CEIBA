@@ -58,7 +58,7 @@ public class VehiculoTest {
 			assertEquals(MENSAJE_TIPO_VEHICULO_OBLIGATORIO, e.getMessage());
 		}
 
-	}
+ 	}
 
 	@Test
 	public void validarArgumentoCilindrajeVacioEnModeloVehiculo() {
