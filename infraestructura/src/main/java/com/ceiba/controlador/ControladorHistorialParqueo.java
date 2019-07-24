@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ceiba.comando.manejador.ComandoVehiculo;
 import com.ceiba.comando.manejador.ManejadorCrearHistorial;
 import com.ceiba.comando.manejador.ManejadorSalidaVehiculosHistorial;
-import com.ceiba.excepcion.ExcepcionVehiculoParqueado;
 import com.ceiba.modelo.HistorialParqueo;
 import com.ceiba.modelo.RespuestaAlRetirarVehiculo;
 
@@ -47,21 +46,10 @@ public class ControladorHistorialParqueo {
 	}
 
 	@PutMapping("/retirar/{placa}")
-	public RespuestaAlRetirarVehiculo  sacarVehiculo(@PathVariable String placa) {
-
-		if (!this.manejadorSalidas.consultarVehiculo(placa)) {
-			throw new ExcepcionVehiculoParqueado("El vehiculo no esta parqueao");
-		}
-
-		if (this.manejadorSalidas.consultarSalidaVehiculo(placa)) {
-			throw new ExcepcionVehiculoParqueado("El vehiculo no esta parqueao");
-		}
+	public RespuestaAlRetirarVehiculo sacarVehiculo(@PathVariable String placa) {
 
 		HistorialParqueo historialParqueo;
-
 		historialParqueo = this.manejadorSalidas.obtenerParqueo(placa);
-
-//							
 		return this.manejadorSalidas.retirarParqueo(historialParqueo);
 	}
 }

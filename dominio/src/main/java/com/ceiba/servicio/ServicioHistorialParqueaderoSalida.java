@@ -19,7 +19,7 @@ public class ServicioHistorialParqueaderoSalida {
 	}
 
 	public RespuestaAlRetirarVehiculo ejecutarRetirarParqueo(HistorialParqueo historial) {
-
+		
 	float valorTotalAPagar = 0;
 		LocalDateTime fechaSalida = historial.getFechaSalida();
 		if (fechaSalida == null) {
