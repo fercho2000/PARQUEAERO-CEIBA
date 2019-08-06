@@ -66,24 +66,18 @@ pipeline {
        }
    }
  
-   post {
-         always {
-             echo 'This will always run'
-         }
-         success {
-             echo 'This will run only if successful'
-             junit '**/build/test-results/test/*.xml'
-         }
-	         failure {
-	           echo 'This will run only if failed'
-	           }
-	       }
+	   post {
+	         always {
+	             echo 'This will always run'
+	         }
+	         success {
+	             echo 'This will run only if successful'
+	             junit '**/build/test-results/test/*.xml'
+	         }
+		         failure {
+	 		echo 'This will run only if failed'mail (to: 'jose.usuga@ceiba.com.co',subject: "FailedPipeline:${currentBuild.fullDisplayName}",
+	 		body: "Something is wrongwith ${env.BUILD_URL}")
+	 		}
+		 }
 	       
-	 post {
- 		failure {
- 		echo 'This will run only if failed'mail (to: 'jose.usuga@ceiba.com.co',subject: "FailedPipeline:${currentBuild.fullDisplayName}",
- 		body: "Something is wrongwith ${env.BUILD_URL}")
- 		}
- 	}
-	       
-     }
+  }
