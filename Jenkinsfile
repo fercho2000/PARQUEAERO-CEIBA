@@ -75,7 +75,8 @@ pipeline {
 	             junit '**/build/test-results/test/*.xml'
 	         }
 		         failure {
-	 		echo 'This will run only if failed'mail (to: 'jose.usuga@ceiba.com.co',subject: "FailedPipeline:${currentBuild.fullDisplayName}",
+	 		echo 'This will run only if failed' 
+	 		mail (to: 'jose.usuga@ceiba.com.co',subject: "Failed Pipeline:${currentBuild.fullDisplayName}",
 	 		body: "Something is wrongwith ${env.BUILD_URL}")
 	 		}
 		 }
