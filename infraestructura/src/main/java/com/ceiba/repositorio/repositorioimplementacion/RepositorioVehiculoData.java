@@ -1,10 +1,10 @@
-package com.ceiba.repositorio;
+package com.ceiba.repositorio.repositorioimplementacion;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.ceiba.builderparqueo.MaperVehiculo;
-import com.ceiba.entity.EntityVehiculo;
+import com.ceiba.repositorio.builderparqueo.MaperVehiculo;
+import com.ceiba.repositorio.entity.EntityVehiculo;
 import com.ceiba.modelo.Vehiculo;
 import com.ceiba.puerto.repositorio.RepositorioVehiculo;
 

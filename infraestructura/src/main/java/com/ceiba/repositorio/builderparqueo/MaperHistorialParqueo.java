@@ -1,9 +1,9 @@
-package com.ceiba.builderparqueo;
 
+package com.ceiba.repositorio.builderparqueo;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ceiba.entity.EntityHistorialParqueo;
+import com.ceiba.repositorio.entity.EntityHistorialParqueo;
 import com.ceiba.modelo.HistorialParqueo;
 
 public final class MaperHistorialParqueo {

@@ -1,9 +1,9 @@
-package com.ceiba.crudrepository;
+package com.ceiba.repositorio.crudrepository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.ceiba.entity.EntityHistorialParqueo;
+import com.ceiba.repositorio.entity.EntityHistorialParqueo;
 
 @Repository
 public interface CrudHistorialParqueoRepository extends CrudRepository<EntityHistorialParqueo, Integer> {

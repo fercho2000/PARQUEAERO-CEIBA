@@ -1,6 +1,6 @@
-package com.ceiba.builderparqueo;
+package com.ceiba.repositorio.builderparqueo;
 
-import com.ceiba.entity.EntityVehiculo;
+import com.ceiba.repositorio.entity.EntityVehiculo;
 import com.ceiba.modelo.Vehiculo;
 
 public final class MaperVehiculo {

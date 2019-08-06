@@ -1,4 +1,4 @@
-package com.ceiba.entity;
+package com.ceiba.repositorio.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

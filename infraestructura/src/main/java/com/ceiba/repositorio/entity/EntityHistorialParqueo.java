@@ -1,4 +1,4 @@
-package com.ceiba.entity;
+package com.ceiba.repositorio.entity;
 
 import java.time.LocalDateTime;
 import javax.persistence.Entity;

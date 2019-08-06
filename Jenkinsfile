@@ -74,6 +74,16 @@ pipeline {
              echo 'This will run only if successful'
              junit '**/build/test-results/test/*.xml'
          }
-         failure {
-           echo 'This will run only if failed'
-           }}}
+	         failure {
+	           echo 'This will run only if failed'
+	           }
+	       }
+	       
+	 post {
+ 		failure {
+ 		echo 'This will run only if failed'mail (to: 'jose.usuga@ceiba.com.co',subject: "FailedPipeline:${currentBuild.fullDisplayName}",
+ 		body: "Something is wrongwith ${env.BUILD_URL}")
+ 		}
+ 	}
+	       
+     }
