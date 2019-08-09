@@ -69,9 +69,9 @@ public class ServicioHistorialParqueo {
 		TipoVehiculo tipo = historial.getVehiculo().getTipoVehiculo();
 		int cantidadVehiculos = this.repositorioHistorial.cantidadVehiculos(historial.getVehiculo().getTipoVehiculo());
 
-		if (tipo == TipoVehiculo.moto && cantidadVehiculos >=NUMERO_MAXIMO_PARA_MOTO) {
+		if (tipo == TipoVehiculo.MOTO && cantidadVehiculos >=NUMERO_MAXIMO_PARA_MOTO) {
 			throw new ExcepcionCantidadVehiculos(NO_HAY_MAS_CUPOS_PARA_MOTO);
-		} else if (tipo == TipoVehiculo.auto && cantidadVehiculos >= NUMERO_MAXIMO_PARA_AUTO) {
+		} else if (tipo == TipoVehiculo.AUTO && cantidadVehiculos >= NUMERO_MAXIMO_PARA_AUTO) {
 
 			throw new ExcepcionCantidadVehiculos(NO_HAY_MAS_CUPOS_PARA_AUTO);
 		}

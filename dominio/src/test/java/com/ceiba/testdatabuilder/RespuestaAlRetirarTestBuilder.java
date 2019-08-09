@@ -14,7 +14,7 @@ public class RespuestaAlRetirarTestBuilder {
 
 	public RespuestaAlRetirarTestBuilder() {
 		placa = "aed585";
-		tipoVehiculo = TipoVehiculo.moto;
+		tipoVehiculo = TipoVehiculo.MOTO;
 		fechaIngreso = LocalDateTime.now();
 		fechaSalida = LocalDateTime.now().plusDays(1);
 		pago = 0;

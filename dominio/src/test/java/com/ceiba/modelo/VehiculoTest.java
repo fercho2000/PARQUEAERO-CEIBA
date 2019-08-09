@@ -34,7 +34,7 @@ public class VehiculoTest {
 	public void validarLongitudPlacaEnModeloVehiculo() {
 		// Arrange
 		VehiculoTestBuilder vehiculoTestBuilder = new VehiculoTestBuilder().conPlaca(PLACA).conCilindraje(CILINDRAJE)
-				.conMarca(MARCA).conModelo(MODELO).conTipoVehiculo(TipoVehiculo.moto);
+				.conMarca(MARCA).conModelo(MODELO).conTipoVehiculo(TipoVehiculo.MOTO);
 		// act
 		try {
 			vehiculoTestBuilder.build();

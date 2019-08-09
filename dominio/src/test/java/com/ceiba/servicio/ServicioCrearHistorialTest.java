@@ -19,8 +19,8 @@ import com.ceiba.testdatabuilder.VehiculoTestBuilder;
 public class ServicioCrearHistorialTest {
 
 	private static final String PLACA = "afr32b";
-	private static final TipoVehiculo TIPO_VEHICULO_ES_MOTO = TipoVehiculo.moto;
-	private static final TipoVehiculo TIPO_VEHICULO_ES_AUTO = TipoVehiculo.auto;
+	private static final TipoVehiculo TIPO_VEHICULO_ES_MOTO = TipoVehiculo.MOTO;
+	private static final TipoVehiculo TIPO_VEHICULO_ES_AUTO = TipoVehiculo.AUTO;
 	private static final int MAXIMO_CUPOS_MOTO = 10;
 	private static final int MAXIMO_CUPOS_AUTO = 20;
 	private static final DayOfWeek EL_DIA_LUNES = DayOfWeek.MONDAY;

@@ -13,7 +13,7 @@ public class VehiculoTestBuilder {
     
     public VehiculoTestBuilder() {
 		placa = "aed585";
-		tipoVehiculo = TipoVehiculo.moto;
+		tipoVehiculo = TipoVehiculo.MOTO;
 		cilindraje = "600";
 		modelo = "2003";
 		marca = "pulsar";

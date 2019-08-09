@@ -1,7 +1,7 @@
 package com.ceiba.modelo;
 
 public enum TipoVehiculo {
-	moto("moto"), auto("auto");
+	MOTO("moto"), AUTO("auto");
 
 	private final String code;
 
@@ -11,11 +11,11 @@ public enum TipoVehiculo {
 
 	public static TipoVehiculo fromCode(String code) {
 		if (code.equals("auto") || code.equals("AUTO")) {
-			return auto;
+			return AUTO;
 		}
 
 		if (code.equals("moto") || code.equals("MOTO")) {
-			return moto;
+			return MOTO;
 		}
 
 		throw new UnsupportedOperationException("The code " + code + " is not supported!");

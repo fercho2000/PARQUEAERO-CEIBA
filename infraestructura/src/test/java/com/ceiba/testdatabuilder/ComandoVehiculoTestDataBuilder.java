@@ -13,7 +13,7 @@ public class ComandoVehiculoTestDataBuilder {
 
 	public ComandoVehiculoTestDataBuilder() {
 		this.placa = "NZF73C";
-		this.tipoVehiculo = TipoVehiculo.moto;
+		this.tipoVehiculo = TipoVehiculo.MOTO;
 		this.cilindraje = "220";
 		this.marca = "pulsar";
 		this.modelo = "2011";
