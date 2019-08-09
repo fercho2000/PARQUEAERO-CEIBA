@@ -37,40 +37,19 @@ public class RespuestaAlRetirarVehiculo {
 		return tipoVehiculo;
 	}
 
-	public void setTipoVehiculo(TipoVehiculo tipoVehiculo) {
-		this.tipoVehiculo = tipoVehiculo;
-	}
-
 	public String getPlaca() {
 		return placa;
-	}
-
-	public void setPlaca(String placa) {
-		this.placa = placa;
 	}
 
 	public LocalDateTime getFechaIngreso() {
 		return fechaIngreso;
 	}
 
-	public void setFechaIngreso(LocalDateTime fechaIngreso) {
-		this.fechaIngreso = fechaIngreso;
-	}
-
 	public LocalDateTime getFechaSalida() {
 		return fechaSalida;
 	}
-
-	public void setFechaSalida(LocalDateTime fechaSalida) {
-		this.fechaSalida = fechaSalida;
-	}
-
+	
 	public float getPago() {
 		return pago;
 	}
-
-	public void setPago(float pago) {
-		this.pago = pago;
-	}
-
 }
