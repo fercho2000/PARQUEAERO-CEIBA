@@ -114,46 +114,20 @@ public class ServicioCrearHistorialTest {
 		crearHistorial.validarPlacaParaDiasHabiles(vehiculo.getPlaca(), EL_DIA_DOMINGO);
 	}
 
-//	@Test(expected = ExcepcionTipoVehiculoInvalido.class)
-//	public void valiarTipoVehiculoInvalido() {
-//
-//		RepositorioHistorialParqueo repositorioHistorialP = mock(RepositorioHistorialParqueo.class);
-//		RepositorioVehiculo repositorioVehiculo = mock(RepositorioVehiculo.class);
-//		ServicioHistorialParqueo crearHistorial = new ServicioHistorialParqueo(repositorioHistorialP,
-//				repositorioVehiculo);
-//
-//		Vehiculo vehiculo = new VehiculoTestBuilder().conTipoVehiculo(PROBAR_TIPO_VEHICULO).build();
-//		// -- assert
-//		crearHistorial.devuelveTipoDeVehiculo(vehiculo.getTipoVehiculo());
-//	}
+	@Test(expected = UnsupportedOperationException.class)
+	public void validarTipoVehiculoInvalido() {
+		TipoVehiculo.fromCode("invalido");
+	}
 
-//	@Test
-//	public void validarSiEsMotoTest() {
-//		// arrange
-//		RepositorioHistorialParqueo repositorioHistorialP = mock(RepositorioHistorialParqueo.class);
-//		RepositorioVehiculo repositorioVehiculo = mock(RepositorioVehiculo.class);
-//		ServicioHistorialParqueo crearHistorial = new ServicioHistorialParqueo(repositorioHistorialP,
-//				repositorioVehiculo);
-//		// act
-//		String tipoAutomovil = crearHistorial.devuelveTipoDeVehiculo(TIPO_VEHICULO_ES_MOTO);
-//
-//		// assert
-//		assertTrue(tipoAutomovil.equals("moto"));
-//	}
-//
-//	@Test
-//	public void validarSiEsAutoTest() {
-//		// arrange
-//		RepositorioHistorialParqueo repositorioHistorialP = mock(RepositorioHistorialParqueo.class);
-//		RepositorioVehiculo repositorioVehiculo = mock(RepositorioVehiculo.class);
-//		ServicioHistorialParqueo crearHistorial = new ServicioHistorialParqueo(repositorioHistorialP,
-//				repositorioVehiculo);
-//		// act
-//		String tipoAutomovil = crearHistorial.devuelveTipoDeVehiculo(TIPO_VEHICULO_ES_AUTO);
-//
-//		// assert
-//		assertTrue(tipoAutomovil.equals("auto"));
-//	}
+	@Test
+	public void validarSiEsMotoTest() {
+		TipoVehiculo.fromCode("moto");
+	}
+
+	@Test
+	public void validarSiEsAutoTest() {
+		TipoVehiculo.fromCode("auto");
+	}
 
 	@Test
 	public void validarSiEsLetraATest() {
