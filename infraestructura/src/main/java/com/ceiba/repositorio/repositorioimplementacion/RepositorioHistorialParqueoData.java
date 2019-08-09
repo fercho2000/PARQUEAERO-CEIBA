@@ -7,6 +7,7 @@ import com.ceiba.repositorio.crudrepository.CrudHistorialParqueoRepository;
 import com.ceiba.repositorio.entity.EntityHistorialParqueo;
 import com.ceiba.modelo.HistorialParqueo;
 import com.ceiba.modelo.RespuestaAlRetirarVehiculo;
+import com.ceiba.modelo.TipoVehiculo;
 import com.ceiba.modelo.Vehiculo;
 import com.ceiba.puerto.repositorio.RepositorioHistorialParqueo;
 
@@ -68,7 +69,7 @@ public class RepositorioHistorialParqueoData implements RepositorioHistorialParq
 	}
 
 	@Override
-	public int cantidadVehiculos(String tipoVehiculo) {
+	public int cantidadVehiculos(TipoVehiculo tipoVehiculo) {
 		int contadorVehiculos = 0;
 		Iterable<EntityHistorialParqueo> listaVehiculos = this.repositorioParqueo
 				.findByVehiculoTipovehiculo(tipoVehiculo);

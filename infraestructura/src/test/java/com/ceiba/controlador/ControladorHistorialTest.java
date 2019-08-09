@@ -36,7 +36,7 @@ public class ControladorHistorialTest {
 	@Test
 	public void testGuardarYListar() throws Exception {
 		// arrange
-		// arrange
+		
 		ComandoVehiculo comandoVehiculo = new ComandoVehiculoTestDataBuilder().build();
 
 		// act - assert

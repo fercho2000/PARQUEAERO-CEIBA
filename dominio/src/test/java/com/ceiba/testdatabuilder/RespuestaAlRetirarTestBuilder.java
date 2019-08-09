@@ -3,9 +3,10 @@ package com.ceiba.testdatabuilder;
 import java.time.LocalDateTime;
 
 import com.ceiba.modelo.RespuestaAlRetirarVehiculo;
+import com.ceiba.modelo.TipoVehiculo;
 
 public class RespuestaAlRetirarTestBuilder {
-	private String tipoVehiculo;
+	private TipoVehiculo tipoVehiculo;
 	private String placa;
 	private LocalDateTime fechaIngreso;
 	private LocalDateTime fechaSalida;
@@ -13,7 +14,7 @@ public class RespuestaAlRetirarTestBuilder {
 
 	public RespuestaAlRetirarTestBuilder() {
 		placa = "aed585";
-		tipoVehiculo = "moto";
+		tipoVehiculo = TipoVehiculo.moto;
 		fechaIngreso = LocalDateTime.now();
 		fechaSalida = LocalDateTime.now().plusDays(1);
 		pago = 0;
@@ -24,7 +25,7 @@ public class RespuestaAlRetirarTestBuilder {
 		return this;
 	}
 
-	public RespuestaAlRetirarTestBuilder conTipoVehiculo(String tipoVehiculo) {
+	public RespuestaAlRetirarTestBuilder conTipoVehiculo(TipoVehiculo tipoVehiculo) {
 		this.tipoVehiculo = tipoVehiculo;
 		return this;
 	}

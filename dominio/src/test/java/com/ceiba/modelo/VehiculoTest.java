@@ -13,7 +13,6 @@ public class VehiculoTest {
 	private static final String MENSAJE_MARCA_OBLIGATORIO = "La marca es obligatorio.";
 	private static final String MENSAJE_MODELO_OBLIGATORIO = "El modelo del vehiculo es obligatorio.";
 	private static final String CILINDRAJE = "200";
-	private static final String TIPO_MOTO = "MOTO";
 	private static final String MARCA = "BOXER";
 	private static final String MODELO = "2011";
 
@@ -35,7 +34,7 @@ public class VehiculoTest {
 	public void validarLongitudPlacaEnModeloVehiculo() {
 		// Arrange
 		VehiculoTestBuilder vehiculoTestBuilder = new VehiculoTestBuilder().conPlaca(PLACA).conCilindraje(CILINDRAJE)
-				.conMarca(MARCA).conModelo(MODELO).conTipoVehiculo(TIPO_MOTO);
+				.conMarca(MARCA).conModelo(MODELO).conTipoVehiculo(TipoVehiculo.moto);
 		// act
 		try {
 			vehiculoTestBuilder.build();

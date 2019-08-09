@@ -48,9 +48,8 @@ public class ServicioHistorialParqueaderoSalida {
 	}
 
 	public float calcularPagoParqueo(LocalDateTime fechaIngreso, LocalDateTime fechaSalida, String placa,
-			String tipoVehiculo, String valorCilindraje) {
-		String tipo = TipoVehiculo.devuelveTipoDeVehiculo(tipoVehiculo);
-		PagoVehiculo pagoVehiculo = PagoFactory.crear(tipo, valorCilindraje);
+			TipoVehiculo tipoVehiculo, String valorCilindraje) {
+		PagoVehiculo pagoVehiculo = PagoFactory.crear(tipoVehiculo, valorCilindraje);
 		// template method
 		return pagoVehiculo.calcularPago(fechaIngreso, fechaSalida);
 	}

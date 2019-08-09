@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.ceiba.modelo.HistorialParqueo;
 import com.ceiba.modelo.RespuestaAlRetirarVehiculo;
+import com.ceiba.modelo.TipoVehiculo;
 import com.ceiba.modelo.Vehiculo;
 
 public interface RepositorioHistorialParqueo {
@@ -22,6 +23,6 @@ public interface RepositorioHistorialParqueo {
 
 	public List<HistorialParqueo> consultarVehiculosParqueados();
 
-	public int cantidadVehiculos(String tipo);
+	public int cantidadVehiculos(TipoVehiculo tipo);
 
 }

@@ -1,8 +1,11 @@
 package com.ceiba.repositorio.entity;
 
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.ceiba.modelo.TipoVehiculo;
 
 @Entity
 @Table(name = "Vehiculo")
@@ -10,7 +13,10 @@ public class EntityVehiculo  {
 	
 	@Id
 	private String placa;
-	private String tipovehiculo;
+	
+	@Convert(converter = TipoVehiculoConverter.class)
+	private TipoVehiculo tipovehiculo;
+	
 	private String cilindraje;
 	private String marca;
 	private String modelo;
@@ -19,7 +25,7 @@ public class EntityVehiculo  {
 
 	}
 
-	public EntityVehiculo(String placa, String tipovehiculo, String cilindraje, String marca, String modelo) {
+	public EntityVehiculo(String placa, TipoVehiculo tipovehiculo, String cilindraje, String marca, String modelo) {
 
 		this.placa = placa;
 		this.tipovehiculo = tipovehiculo;
@@ -36,11 +42,11 @@ public class EntityVehiculo  {
 		this.placa = placa;
 	}
 
-	public String getTipovehiculo() {
+	public TipoVehiculo getTipovehiculo() {
 		return tipovehiculo;
 	}
 
-	public void setTipovehiculo(String tipovehiculo) {
+	public void setTipovehiculo(TipoVehiculo tipovehiculo) {
 		this.tipovehiculo = tipovehiculo;
 	}
 

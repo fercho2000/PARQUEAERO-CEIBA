@@ -11,12 +11,12 @@ public class Vehiculo {
 	private static final String MENSAJE_MODELO_OBLIGATORIO = "El modelo del vehiculo es obligatorio.";
 
 	private String placa;
-	private String tipoVehiculo;
+	private TipoVehiculo tipoVehiculo;
 	private String cilindraje;
 	private String marca;
 	private String modelo;
 
-	public Vehiculo(String placa, String tipoVehiculo, String cilindraje, String marca, String modelo) {
+	public Vehiculo(String placa, TipoVehiculo tipoVehiculo, String cilindraje, String marca, String modelo) {
 
 		ValidarArgumentosVehiculo.validarArgumentoPlaca(placa, MENSAJE_PLACA_OBLIGATORIO);
 		ValidarArgumentosVehiculo.validarLongitudPlaca(placa, LONGITUD_PLACAS, MENSAJE_SI_PLACAS_INCORRECTAS);
@@ -41,11 +41,11 @@ public class Vehiculo {
 		this.placa = placa;
 	}
 
-	public String getTipoVehiculo() {
+	public TipoVehiculo getTipoVehiculo() {
 		return tipoVehiculo;
 	}
 
-	public void setTipoVehiculo(String tipoVehiculo) {
+	public void setTipoVehiculo(TipoVehiculo tipoVehiculo) {
 		this.tipoVehiculo = tipoVehiculo;
 	}
 

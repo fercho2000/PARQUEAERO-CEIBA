@@ -3,6 +3,7 @@ package com.ceiba.repositorio.crudrepository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import com.ceiba.modelo.TipoVehiculo;
 import com.ceiba.repositorio.entity.EntityHistorialParqueo;
 
 @Repository
@@ -12,7 +13,7 @@ public interface CrudHistorialParqueoRepository extends CrudRepository<EntityHis
 
 	public Iterable<EntityHistorialParqueo> findByFechaSalidaNotNull();
 
-	public Iterable<EntityHistorialParqueo> findByVehiculoTipovehiculo(String tipo);
+	public Iterable<EntityHistorialParqueo> findByVehiculoTipovehiculo(TipoVehiculo tipo);
 	
 	public Iterable<EntityHistorialParqueo> findAll();
 

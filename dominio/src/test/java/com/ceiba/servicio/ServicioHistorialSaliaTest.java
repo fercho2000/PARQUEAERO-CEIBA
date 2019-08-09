@@ -5,6 +5,7 @@ import static org.mockito.Mockito.mock;
 import java.time.LocalDateTime;
 import org.junit.Test;
 
+import com.ceiba.modelo.TipoVehiculo;
 import com.ceiba.modelo.Vehiculo;
 import com.ceiba.puerto.repositorio.RepositorioHistorialParqueo;
 import com.ceiba.testdatabuilder.VehiculoTestBuilder;
@@ -13,8 +14,8 @@ public class ServicioHistorialSaliaTest {
 
 	private static final String PLACA = "NZF73C";
 	private static final String PLACA_AUTO = "NGD125";
-	private static final String TIPO_VEHICULO_ES_MOTO = "moto";
-	private static final String TIPO_VEHICULO_ES_AUTO = "auto";
+	private static final TipoVehiculo TIPO_VEHICULO_ES_MOTO = TipoVehiculo.moto;
+	private static final TipoVehiculo TIPO_VEHICULO_ES_AUTO = TipoVehiculo.auto;
 	private static final String CILINDRAJE_BAJO = "220";
 	private static final String CILINDRAJE_ALTO = "520";
 

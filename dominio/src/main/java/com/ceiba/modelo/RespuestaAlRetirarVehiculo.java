@@ -9,13 +9,13 @@ public class RespuestaAlRetirarVehiculo {
 	private static final String MENSAJE_NO_HAY_FECHA_INGRESO = "No no hay fecha ingreso";
 	private static final String MENSAJE_NO_HAY_FECHA_SALIDA = "No no hay fecha salida";
 	private static final String MENSAJE_NO_GENERO_VALOR_PAGO = "Valor no encontrado";
-	private String tipoVehiculo;
+	private TipoVehiculo tipoVehiculo;
 	private String placa;
 	private LocalDateTime fechaIngreso;
 	private LocalDateTime fechaSalida;
 	private float pago;
 
-	public RespuestaAlRetirarVehiculo(String tipoVehiculo, String placa, LocalDateTime fechaIngreso,
+	public RespuestaAlRetirarVehiculo(TipoVehiculo tipoVehiculo, String placa, LocalDateTime fechaIngreso,
 			LocalDateTime fechaSalida, float pago) {
 		
 		ValidarArgumentosRespuestaRetirarVehiculo.validarArgumentoPlaca(placa, MENSAJE_NO_HAY_PLACA);
@@ -33,11 +33,11 @@ public class RespuestaAlRetirarVehiculo {
 		this.pago = pago;
 	}
 
-	public String getTipoVehiculo() {
+	public TipoVehiculo getTipoVehiculo() {
 		return tipoVehiculo;
 	}
 
-	public void setTipoVehiculo(String tipoVehiculo) {
+	public void setTipoVehiculo(TipoVehiculo tipoVehiculo) {
 		this.tipoVehiculo = tipoVehiculo;
 	}
 

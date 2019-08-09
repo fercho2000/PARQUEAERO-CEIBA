@@ -8,9 +8,9 @@ import java.time.DayOfWeek;
 import org.junit.Test;
 import com.ceiba.excepcion.ExcepcionCantidadVehiculos;
 import com.ceiba.excepcion.ExcepcionRestriccionDia;
-import com.ceiba.excepcion.ExcepcionTipoVehiculoInvalido;
 import com.ceiba.excepcion.ExcepcionVehiculoParqueado;
 import com.ceiba.modelo.HistorialParqueo;
+import com.ceiba.modelo.TipoVehiculo;
 import com.ceiba.modelo.Vehiculo;
 import com.ceiba.puerto.repositorio.RepositorioHistorialParqueo;
 import com.ceiba.puerto.repositorio.RepositorioVehiculo;
@@ -19,11 +19,10 @@ import com.ceiba.testdatabuilder.VehiculoTestBuilder;
 public class ServicioCrearHistorialTest {
 
 	private static final String PLACA = "afr32b";
-	private static final String TIPO_VEHICULO_ES_MOTO = "moto";
-	private static final String TIPO_VEHICULO_ES_AUTO = "auto";
+	private static final TipoVehiculo TIPO_VEHICULO_ES_MOTO = TipoVehiculo.moto;
+	private static final TipoVehiculo TIPO_VEHICULO_ES_AUTO = TipoVehiculo.auto;
 	private static final int MAXIMO_CUPOS_MOTO = 10;
 	private static final int MAXIMO_CUPOS_AUTO = 20;
-	private static final String PROBAR_TIPO_VEHICULO = "noesUnVehiculo";
 	private static final DayOfWeek EL_DIA_LUNES = DayOfWeek.MONDAY;
 	private static final DayOfWeek EL_DIA_DOMINGO = DayOfWeek.SUNDAY;
 
@@ -115,46 +114,46 @@ public class ServicioCrearHistorialTest {
 		crearHistorial.validarPlacaParaDiasHabiles(vehiculo.getPlaca(), EL_DIA_DOMINGO);
 	}
 
-	@Test(expected = ExcepcionTipoVehiculoInvalido.class)
-	public void valiarTipoVehiculoInvalido() {
+//	@Test(expected = ExcepcionTipoVehiculoInvalido.class)
+//	public void valiarTipoVehiculoInvalido() {
+//
+//		RepositorioHistorialParqueo repositorioHistorialP = mock(RepositorioHistorialParqueo.class);
+//		RepositorioVehiculo repositorioVehiculo = mock(RepositorioVehiculo.class);
+//		ServicioHistorialParqueo crearHistorial = new ServicioHistorialParqueo(repositorioHistorialP,
+//				repositorioVehiculo);
+//
+//		Vehiculo vehiculo = new VehiculoTestBuilder().conTipoVehiculo(PROBAR_TIPO_VEHICULO).build();
+//		// -- assert
+//		crearHistorial.devuelveTipoDeVehiculo(vehiculo.getTipoVehiculo());
+//	}
 
-		RepositorioHistorialParqueo repositorioHistorialP = mock(RepositorioHistorialParqueo.class);
-		RepositorioVehiculo repositorioVehiculo = mock(RepositorioVehiculo.class);
-		ServicioHistorialParqueo crearHistorial = new ServicioHistorialParqueo(repositorioHistorialP,
-				repositorioVehiculo);
-
-		Vehiculo vehiculo = new VehiculoTestBuilder().conTipoVehiculo(PROBAR_TIPO_VEHICULO).build();
-		// -- assert
-		crearHistorial.devuelveTipoDeVehiculo(vehiculo.getTipoVehiculo());
-	}
-
-	@Test
-	public void validarSiEsMotoTest() {
-		// arrange
-		RepositorioHistorialParqueo repositorioHistorialP = mock(RepositorioHistorialParqueo.class);
-		RepositorioVehiculo repositorioVehiculo = mock(RepositorioVehiculo.class);
-		ServicioHistorialParqueo crearHistorial = new ServicioHistorialParqueo(repositorioHistorialP,
-				repositorioVehiculo);
-		// act
-		String tipoAutomovil = crearHistorial.devuelveTipoDeVehiculo(TIPO_VEHICULO_ES_MOTO);
-
-		// assert
-		assertTrue(tipoAutomovil.equals("moto"));
-	}
-
-	@Test
-	public void validarSiEsAutoTest() {
-		// arrange
-		RepositorioHistorialParqueo repositorioHistorialP = mock(RepositorioHistorialParqueo.class);
-		RepositorioVehiculo repositorioVehiculo = mock(RepositorioVehiculo.class);
-		ServicioHistorialParqueo crearHistorial = new ServicioHistorialParqueo(repositorioHistorialP,
-				repositorioVehiculo);
-		// act
-		String tipoAutomovil = crearHistorial.devuelveTipoDeVehiculo(TIPO_VEHICULO_ES_AUTO);
-
-		// assert
-		assertTrue(tipoAutomovil.equals("auto"));
-	}
+//	@Test
+//	public void validarSiEsMotoTest() {
+//		// arrange
+//		RepositorioHistorialParqueo repositorioHistorialP = mock(RepositorioHistorialParqueo.class);
+//		RepositorioVehiculo repositorioVehiculo = mock(RepositorioVehiculo.class);
+//		ServicioHistorialParqueo crearHistorial = new ServicioHistorialParqueo(repositorioHistorialP,
+//				repositorioVehiculo);
+//		// act
+//		String tipoAutomovil = crearHistorial.devuelveTipoDeVehiculo(TIPO_VEHICULO_ES_MOTO);
+//
+//		// assert
+//		assertTrue(tipoAutomovil.equals("moto"));
+//	}
+//
+//	@Test
+//	public void validarSiEsAutoTest() {
+//		// arrange
+//		RepositorioHistorialParqueo repositorioHistorialP = mock(RepositorioHistorialParqueo.class);
+//		RepositorioVehiculo repositorioVehiculo = mock(RepositorioVehiculo.class);
+//		ServicioHistorialParqueo crearHistorial = new ServicioHistorialParqueo(repositorioHistorialP,
+//				repositorioVehiculo);
+//		// act
+//		String tipoAutomovil = crearHistorial.devuelveTipoDeVehiculo(TIPO_VEHICULO_ES_AUTO);
+//
+//		// assert
+//		assertTrue(tipoAutomovil.equals("auto"));
+//	}
 
 	@Test
 	public void validarSiEsLetraATest() {

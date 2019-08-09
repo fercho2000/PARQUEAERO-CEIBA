@@ -1,18 +1,19 @@
 package com.ceiba.testdatabuilder;
 
+import com.ceiba.modelo.TipoVehiculo;
 import com.ceiba.modelo.Vehiculo;
 
 public class VehiculoTestBuilder {
 
 	private String placa;
-	private String tipoVehiculo;
+	private TipoVehiculo tipoVehiculo;
 	private String cilindraje;
 	private String marca;
 	private String modelo;	
     
     public VehiculoTestBuilder() {
 		placa = "aed585";
-		tipoVehiculo = "moto";
+		tipoVehiculo = TipoVehiculo.moto;
 		cilindraje = "600";
 		modelo = "2003";
 		marca = "pulsar";
@@ -23,7 +24,7 @@ public class VehiculoTestBuilder {
     	return this;
     }
     
-    public VehiculoTestBuilder conTipoVehiculo(String tipoVehiculo) {
+    public VehiculoTestBuilder conTipoVehiculo(TipoVehiculo tipoVehiculo) {
     	this.tipoVehiculo = tipoVehiculo;
     	return this;
     }

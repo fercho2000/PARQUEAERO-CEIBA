@@ -1,9 +1,11 @@
 package com.ceiba.comando.manejador;
 
+import com.ceiba.modelo.TipoVehiculo;
+
 public class ComandoVehiculo {
 
 	private String placa;
-	private String tipoVehiculo;
+	private TipoVehiculo tipoVehiculo;
 	private String cilindraje;
 	private String marca;
 	private String modelo;
@@ -12,7 +14,7 @@ public class ComandoVehiculo {
 
 	}
 
-	public ComandoVehiculo(String placa, String tipoVehiculo, String cilindraje, String marca, String modelo) {
+	public ComandoVehiculo(String placa, TipoVehiculo tipoVehiculo, String cilindraje, String marca, String modelo) {
 
 		this.placa = placa;
 		this.tipoVehiculo = tipoVehiculo;
@@ -25,7 +27,7 @@ public class ComandoVehiculo {
 		return placa;
 	}
 
-	public String getTipoVehiculo() {
+	public TipoVehiculo getTipoVehiculo() {
 		return tipoVehiculo;
 	}
 
@@ -40,7 +42,4 @@ public class ComandoVehiculo {
 	public String getModelo() {
 		return modelo;
 	}
-
-
-
 }
