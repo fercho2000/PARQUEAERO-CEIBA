@@ -26,7 +26,7 @@ public class ServicioHistorialParqueaderoSalida {
 			fechaSalida = LocalDateTime.now();
 		}
 		valorTotalAPagar = calcularPagoParqueo(historial.getFechaIngreso(), fechaSalida,
-				historial.getVehiculo().getPlaca(), historial.getVehiculo().getTipoVehiculo(),
+				historial.getVehiculo().getTipoVehiculo(),
 				historial.getVehiculo().getCilindraje());
 
 		historial.setPago(valorTotalAPagar);
@@ -47,7 +47,7 @@ public class ServicioHistorialParqueaderoSalida {
 		return this.repositorioHistorial.existeParqueovehiculo(placa);
 	}
 
-	public float calcularPagoParqueo(LocalDateTime fechaIngreso, LocalDateTime fechaSalida, String placa,
+	public float calcularPagoParqueo(LocalDateTime fechaIngreso, LocalDateTime fechaSalida,
 			TipoVehiculo tipoVehiculo, String valorCilindraje) {
 		PagoVehiculo pagoVehiculo = PagoFactory.crear(tipoVehiculo, valorCilindraje);
 		// template method

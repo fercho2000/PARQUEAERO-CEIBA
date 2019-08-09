@@ -35,7 +35,7 @@ public class ServicioHistorialSaliaTest {
 				repositorioHistorialP);
 
 		// act
-		float valorPago = salidaParqueadero.calcularPagoParqueo(fechaIngreso, fechaSalida, vehiculo.getPlaca(),
+		float valorPago = salidaParqueadero.calcularPagoParqueo(fechaIngreso, fechaSalida,
 				vehiculo.getTipoVehiculo(), vehiculo.getCilindraje());
 
 		// assert
@@ -58,7 +58,7 @@ public class ServicioHistorialSaliaTest {
 				repositorioHistorialP);
 
 		// act
-		float valorPago = salidaParqueadero.calcularPagoParqueo(fechaIngreso, fechaSalida, vehiculo.getPlaca(),
+		float valorPago = salidaParqueadero.calcularPagoParqueo(fechaIngreso, fechaSalida,
 				vehiculo.getTipoVehiculo(), vehiculo.getCilindraje());
 
 		// assert
@@ -82,7 +82,7 @@ public class ServicioHistorialSaliaTest {
 				repositorioHistorialP);
 
 		// act
-		float valorPago = salidaParqueadero.calcularPagoParqueo(fechaIngreso, fechaSalida, vehiculo.getPlaca(),
+		float valorPago = salidaParqueadero.calcularPagoParqueo(fechaIngreso, fechaSalida,
 				vehiculo.getTipoVehiculo(), vehiculo.getCilindraje());
 
 		// assert
@@ -105,7 +105,7 @@ public class ServicioHistorialSaliaTest {
 		ServicioHistorialParqueaderoSalida salidaParqueadero = new ServicioHistorialParqueaderoSalida(
 				repositorioHistorialP);
 		// act
-		float valorPago = salidaParqueadero.calcularPagoParqueo(fechaIngreso, fechaSalida, vehiculo.getPlaca(),
+		float valorPago = salidaParqueadero.calcularPagoParqueo(fechaIngreso, fechaSalida,
 				vehiculo.getTipoVehiculo(), vehiculo.getCilindraje());
 
 		// assert
@@ -129,7 +129,7 @@ public class ServicioHistorialSaliaTest {
 		ServicioHistorialParqueaderoSalida salidaParqueadero = new ServicioHistorialParqueaderoSalida(
 				repositorioHistorialP);
 		// act
-		float valorPago = salidaParqueadero.calcularPagoParqueo(fechaIngreso, fechaSalida, vehiculo.getPlaca(),
+		float valorPago = salidaParqueadero.calcularPagoParqueo(fechaIngreso, fechaSalida, 
 				vehiculo.getTipoVehiculo(), vehiculo.getCilindraje());
 
 		// assert
@@ -152,7 +152,7 @@ public class ServicioHistorialSaliaTest {
 		ServicioHistorialParqueaderoSalida salidaParqueadero = new ServicioHistorialParqueaderoSalida(
 				repositorioHistorialP);
 		// act
-		float valorPago = salidaParqueadero.calcularPagoParqueo(fechaIngreso, fechaSalida, vehiculo.getPlaca(),
+		float valorPago = salidaParqueadero.calcularPagoParqueo(fechaIngreso, fechaSalida,
 				vehiculo.getTipoVehiculo(), vehiculo.getCilindraje());
 
 		// assert
