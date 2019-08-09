@@ -10,11 +10,11 @@ public enum TipoVehiculo {
 	}
 
 	public static TipoVehiculo fromCode(String code) {
-		if (code.equals("auto") || code.equals("AUTO")) {
+		if ("auto".equals(code) || "AUTO".equals(code)) {
 			return AUTO;
 		}
 
-		if (code.equals("moto") || code.equals("MOTO")) {
+		if ("moto".equals(code) || "MOTO".equals(code)) {
 			return MOTO;
 		}
 
