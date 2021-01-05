@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="issues">
+    <option name="index">
+      <map>
+        <entry key="/a.dummy">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/dominio/src/test/java/com/ceiba/servicio/ServicioCrearHistorialTest.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../ProyectoAsistenteVirtualAsesor/Back-end/ms-base-reactivo/domain/usecase/src/main/java/sura/microserviciobase/usecase/student/CreateStudentUseCase.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../ProyectoAsistenteVirtualAsesor/Back-end/red-comercial/applications/app-service/src/main/java/sura/microserviciobase/MainApplication.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../ProyectoAsistenteVirtualAsesor/Back-end/red-comercial/applications/app-service/src/main/java/sura/microserviciobase/TransformersConfig.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../ProyectoAsistenteVirtualAsesor/Back-end/red-comercial/applications/app-service/src/main/java/sura/microserviciobase/UseCaseConfig.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../ProyectoAsistenteVirtualAsesor/Back-end/red-comercial/applications/app-service/src/main/java/sura/microserviciobase/defaults/DefaultBeansConfig.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../ProyectoAsistenteVirtualAsesor/Back-end/red-comercial/applications/app-service/src/main/java/sura/microserviciobase/defaults/RepositoryDefaultBeansConfig.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../ProyectoAsistenteVirtualAsesor/Back-end/red-comercial/applications/app-service/src/main/resources/application.yml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../ProyectoAsistenteVirtualAsesor/Back-end/red-comercial/domain/model/src/main/java/sura/microserviciobase/domain/assessor/AssessorCode.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../ProyectoAsistenteVirtualAsesor/Back-end/red-comercial/domain/model/src/main/java/sura/microserviciobase/domain/assessor/AssessorRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../ProyectoAsistenteVirtualAsesor/Back-end/red-comercial/domain/model/src/main/java/sura/microserviciobase/domain/common/ex/BusinessException.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../ProyectoAsistenteVirtualAsesor/Back-end/red-comercial/domain/model/src/main/java/sura/microserviciobase/domain/common/ex/NoFoundDataException.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../ProyectoAsistenteVirtualAsesor/Back-end/red-comercial/domain/usecase/src/main/java/sura/microserviciobase/usecase/assessor/QueryAssessorCodeUseCase.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../ProyectoAsistenteVirtualAsesor/Back-end/red-comercial/domain/usecase/src/main/java/sura/microserviciobase/usecase/assessor/QueryAssessorUseCase.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../ProyectoAsistenteVirtualAsesor/Back-end/red-comercial/domain/usecase/src/test/java/sura/microserviciobase/usecase/assessor/QueryAssessorUseCaseTest.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../ProyectoAsistenteVirtualAsesor/Back-end/red-comercial/infraestructure/driven-adapters/webclient/src/main/java/assessor/AssessorCodeServiceDto.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../ProyectoAsistenteVirtualAsesor/Back-end/red-comercial/infraestructure/driven-adapters/webclient/src/main/java/assessor/AssessorRepositoryAdapter.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../ProyectoAsistenteVirtualAsesor/Back-end/red-comercial/infraestructure/driven-adapters/webclient/src/main/java/assessor/AssessorServiceDto.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../ProyectoAsistenteVirtualAsesor/Back-end/red-comercial/infraestructure/driven-adapters/webclient/src/main/java/assessor/transformer/AssessorCodeTransformer.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../ProyectoAsistenteVirtualAsesor/Back-end/red-comercial/infraestructure/driven-adapters/webclient/src/main/java/assessor/transformer/AssessorTransformer.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../ProyectoAsistenteVirtualAsesor/Back-end/red-comercial/infraestructure/driven-adapters/webclient/src/main/java/sura/microserviciobase/webclient/assessor/AssessorCodeServiceDto.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../ProyectoAsistenteVirtualAsesor/Back-end/red-comercial/infraestructure/driven-adapters/webclient/src/main/java/sura/microserviciobase/webclient/assessor/AssessorRepositoryAdapter.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../ProyectoAsistenteVirtualAsesor/Back-end/red-comercial/infraestructure/driven-adapters/webclient/src/main/java/sura/microserviciobase/webclient/assessor/transformer/AssessorCodeTransformer.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../ProyectoAsistenteVirtualAsesor/Back-end/red-comercial/infraestructure/entry-points/reactive-web/src/main/java/sura/microserviciobase/web/assessor/AssessorCodeDto.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../ProyectoAsistenteVirtualAsesor/Back-end/red-comercial/infraestructure/entry-points/reactive-web/src/main/java/sura/microserviciobase/web/assessor/QueryAssessorServices.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../ProyectoAsistenteVirtualAsesor/Back-end/red-comercial/infraestructure/entry-points/reactive-web/src/main/java/sura/microserviciobase/web/assessor/transformers/AssessorTransformer.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../ProyectoAsistenteVirtualAsesor/Back-end/red-comercial/infraestructure/entry-points/reactive-web/src/main/java/sura/microserviciobase/web/shared/DecoderUtil.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../ProyectoAsistenteVirtualAsesor/Back-end/red-comercial/infraestructure/entry-points/reactive-web/src/test/java/sura/microserviciobase/web/shared/DecoderUtilTest.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
